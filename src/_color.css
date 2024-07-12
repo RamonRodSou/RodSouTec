@@ -4,11 +4,13 @@
     --circuloOval-color: #ff0000;
     --circuloOvalBorder: #FFB0FA;
 
-    --faleConoscoBg-color: #f71052;
-    --faleConoscoBgHover-color: #ab0e06 ;
-    --faleConoscoBgActive-color: #ab0e06 ;
+    --faleConoscoBg-color: #1991C0DE;
+    --faleConoscoBgHover-color: #6ecff5de;
+    --faleConoscoBgActive-color: #022c3dde;
     --borderCirculo-color:#EBA9FF;
     --borderCirculo2-color:#d400ff;
 
+    --cardBoxBg-color: #1991c020;
+    --cardBoxBgHover-color:#1991C030;
   }
    

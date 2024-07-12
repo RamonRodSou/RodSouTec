@@ -3,6 +3,7 @@ import Header from '../components/Header/Header'
 import Apresentacao from '../components/Apresentacao/Apresentacao'
 import { Container } from '@mui/material'
 import Solutions from '../components/Solutions/Solutions'
+import Projetos from '../components/Projetos/Projetos'
 
 type Props = {}
 
@@ -12,6 +13,7 @@ const Home = (props: Props) => {
             <Header />
             <Apresentacao />
             <Solutions/>
+            <Projetos/>
         </Container>
     )
 }
