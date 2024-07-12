@@ -17,6 +17,7 @@ describe("Testando Componente Apresentacao", () => {
         expect(logoImg).toHaveLength(1)
     })
 
+    
     it("Deve haver uma frase", async () => {
         render(<Apresentacao />)
         const title = await screen.findByText("Tenha soluções criativas e inovadoras, garantindo a melhor experiência digital. Confie em nossa expertise para levar seu projeto ao próximo nível.")

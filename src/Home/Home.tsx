@@ -2,7 +2,7 @@ import React from 'react'
 import Header from '../components/Header/Header'
 import Apresentacao from '../components/Apresentacao/Apresentacao'
 import { Container } from '@mui/material'
-import Experiencia from '../components/Experiencia/Experiencia'
+import Solutions from '../components/Solutions/Solutions'
 
 type Props = {}
 
@@ -11,7 +11,7 @@ const Home = (props: Props) => {
         <Container maxWidth="xl">
             <Header />
             <Apresentacao />
-            <Experiencia/>
+            <Solutions/>
         </Container>
     )
 }

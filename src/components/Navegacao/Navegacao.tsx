@@ -2,6 +2,7 @@ import AppBar from '@mui/material/AppBar'
 import Toolbar from '@mui/material/Toolbar'
 import Button from '@mui/material/Button'
 import { styled } from '@mui/system'
+import { colors } from '@mui/material'
 
 const Root = styled('div')({
 
@@ -16,6 +17,7 @@ const NavButton = styled(Button)({
     color: 'inherit',
     ':hover': {
       backgroundColor:'var(--navBgHove-color)', 
+      color:'var(--navColorHove-color)'
     },
   });
 

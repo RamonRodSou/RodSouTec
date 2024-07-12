@@ -1,9 +1,14 @@
 :root {
     --navBgHove-color: #fff;
+    --navColorHove-color: #084f6bde;
     --circuloOval-color: #ff0000;
     --circuloOvalBorder: #FFB0FA;
 
-    --faleConoscoBG: #370531;
+    --faleConoscoBg-color: #f71052;
+    --faleConoscoBgHover-color: #ab0e06 ;
+    --faleConoscoBgActive-color: #ab0e06 ;
+    --borderCirculo-color:#EBA9FF;
+    --borderCirculo2-color:#d400ff;
 
   }
-  
+   
