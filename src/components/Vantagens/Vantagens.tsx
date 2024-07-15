@@ -1,27 +1,26 @@
 import React, { useEffect, useState } from 'react'
 import { Grid, styled, Typography } from '@mui/material';
-import { fetchListSolution } from '../../service/fetchList';
-import ISolution from '../../interface/ISolution';
+import { fetchListVantagens } from '../../service/fetchList';
+import IVantagem from '../../interface/IVantagem';
 
 type Props = {
-    item?: () => Promise<ISolution[]>
+    item?: () => Promise<IVantagem[]>
     
 }
 
 const CardUl = styled('ul')({
     display:'flex',
-    justifyContent:'center',
-    padding:'0'
+    justifyContent:'space-between',
+    flexWrap:'wrap',
+    padding:'0',
 })
 
 const CardList = styled('li')({
     width: '20%',
     display: 'flex',
-    gap: '1rem',
     justifyContent: 'flex-start',
     flexDirection: 'column',
     padding: '1rem',
-    margin: '.2rem',
     borderRadius: '5px',
     transition: 'transform 0.3s ease-in-out',
     backgroundColor: 'var(--cardBoxBg-color)',
@@ -33,12 +32,12 @@ const CardList = styled('li')({
     },
 
 })
-const Solutions = ({ item }: Props) => {
-    const [items, setItems] = useState<ISolution[]>([])
+const Vantagens = ({ item }: Props) => {
+    const [items, setItems] = useState<IVantagem[]>([])
 
     useEffect(() => {
         (async () => {
-            const response = await fetchListSolution();
+            const response = await fetchListVantagens();
             setItems(response);
         })();
     }, [item])
@@ -49,8 +48,8 @@ const Solutions = ({ item }: Props) => {
                 items.map((item) => (
                     <CardList key={item.id} >
                         <Grid display={'flex'} alignItems={'center'} gap={1}>
-                            <img src={item.img} alt={item.name} width={50} height={50} />
-                            <Typography variant='body1'>{item.name}</Typography>
+                            <img src={item.img} alt={item.title} width={50} height={50} />
+                            <Typography variant='body1'>{item.title}</Typography>
                         </Grid>
                         <Typography variant='body2'>{item.description}</Typography>
 
@@ -61,4 +60,4 @@ const Solutions = ({ item }: Props) => {
     )
 }
 
-export default Solutions
+export default Vantagens

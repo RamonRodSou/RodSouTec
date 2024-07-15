@@ -4,6 +4,7 @@ import Apresentacao from '../components/Apresentacao/Apresentacao'
 import { Container } from '@mui/material'
 import Solutions from '../components/Solutions/Solutions'
 import Projetos from '../components/Projetos/Projetos'
+import Vantagens from '../components/Vantagens/Vantagens'
 
 type Props = {}
 
@@ -14,6 +15,7 @@ const Home = (props: Props) => {
             <Apresentacao />
             <Solutions/>
             <Projetos/>
+            <Vantagens/>
         </Container>
     )
 }

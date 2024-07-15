@@ -7,6 +7,17 @@ import agendou from '../../assets/img/project/agendou.webp'
 
 type Props = {}
 
+const BoxContainer = styled(Box)({
+    display: 'flex', 
+    flexDirection: 'column', 
+    alignItems: 'center', 
+    justifyContent: 'center', 
+    padding: '2rem',
+    marginTop:'4rem',
+    borderRadius: '10px',
+    boxShadow: '0.25rem 0.37rem 1.25rem #00000036 '
+})
+
 const Titulo = styled('h1')({
     fontSize: '2.5rem',
     fontWeight: 'bold',
@@ -20,17 +31,18 @@ const Titulo = styled('h1')({
 
 const BoxProject = styled(Box)({
     display: 'flex',
-    alignItems:'center',
-    justifyContent:'center',
+    alignItems: 'center',
+    justifyContent: 'center',
     width: '100%',
-    flexWrap:'wrap',
-    gap:'2rem',
+    flexWrap: 'wrap',
+    gap: '2rem',
+    padding: '1rem',
 })
 
 const ImgBox = styled('img')({
-    borderRadius: '10px', 
+    borderRadius: '10px',
     transition: 'transform 0.3s ease-in-out',
-    cursor:'pointer',
+    cursor: 'pointer',
 
     '&:hover': {
         opacity: 0.9,
@@ -43,7 +55,7 @@ const ImgBox = styled('img')({
 const Projetos = (props: Props) => {
     return (
 
-        <Box display={'flex'} flexDirection={'column'} alignItems={'center'} justifyContent={'center'} padding={'4rem'}>
+        <BoxContainer >
             <Titulo>Projetos</Titulo>
             <BoxProject>
                 <Grid>
@@ -59,7 +71,7 @@ const Projetos = (props: Props) => {
                     <ImgBox src={agendou} width={500} height={300} alt='Serviços' />
                 </Grid>
             </BoxProject>
-        </Box>
+        </BoxContainer>
     )
 }
 
