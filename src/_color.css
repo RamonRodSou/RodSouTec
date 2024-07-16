@@ -12,5 +12,12 @@
 
     --cardBoxBg-color: #1991c020;
     --cardBoxBgHover-color:#1991C030;
+
+    --cardBoxBgVan-color:hsla(0, 58%, 63%, 0.105);
+    --cardBoxBgVan2-color:#00060930;
+    --cardBoxBgVanHover-color:#232b2e30;
+
+
+
   }
    

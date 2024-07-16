@@ -1,11 +1,6 @@
 import { render, screen } from '@testing-library/react'
 import Vantagens from './Vantagens'
 import { vi } from 'vitest'
-import iconSite from '../../assets/img/icon-site.png'
-import iconMob from '../../assets/img/icom-mob.png'
-import iconSis from '../../assets/img/icon-sis.png'
-import iconLand from '../../assets/img/icon-land.png'
-import iconAt from '../../assets/img/icon-at.png'
 import { fetchListVantagens } from '../../service/fetchList'
 import ListVantagem from './ListVantagens'
 
@@ -22,20 +17,20 @@ describe("Testando Componente Vantagens", () => {
         render(<Vantagens item={mockFetchList} />)
 
         const element = await screen.findAllByRole('listitem')
-        expect(element).toHaveLength(12)
+        expect(element).toHaveLength(6)
     })
 
     it("Deve haver um titulo 'identidade digital' ", async () => {
         render(<Vantagens item={mockFetchList} />)
 
-        const title = await screen.findByText('IDENTIDADE DIGITAL')
+        const title = await screen.findByText('E-MAIL PROFISSIONAL')
         expect(title).toBeInTheDocument()
     })
 
-    it("Deve haver uma descricao 'O conteúdo de seu site compartilhado e podendo ser visto por milhões de pessoas.' ", async () => {
+    it("Deve haver uma descricao 'Garanta profissionalismo em suas comunicações com um e-mail personalizado da sua marca, seja para seu site ou aplicativo. Exemplo: contato@suamarca.com.br' ", async () => {
         render(<Vantagens item={mockFetchList} />)
 
-        const description = await screen.findByText('O conteúdo de seu site compartilhado e podendo ser visto por milhões de pessoas.')
+        const description = await screen.findByText('Garanta profissionalismo em suas comunicações com um e-mail personalizado da sua marca, seja para seu site ou aplicativo. Exemplo: contato@suamarca.com.br')
         expect(description).toBeInTheDocument()
     })
 
