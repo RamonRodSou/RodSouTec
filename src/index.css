@@ -5,13 +5,10 @@
 
   color-scheme: light dark;
   color: rgba(255, 255, 255, 0.87);
-  background: linear-gradient(90deg, #000c29, #84019e);
   transition: background 0.3s ease;  font-synthesis: none;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  background: linear-gradient(90deg, #000c29, #84019e);
 
-  --navBgHove-color: #fff;
-  --circuloOaval-color: #ff0000;
 }
-

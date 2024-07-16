@@ -15,10 +15,21 @@ const ContainerDuvidas = styled(Box)({
     padding: '3rem 0',
     boxShadow: '0.25rem 0.37rem 1.25rem #00000036 ',
     margin: '3rem 0 ',
+    borderRadius:'5px',
+
 
 })
-
-
+const Titulo = styled('h2')({
+    marginTop:0,
+    fontSize: '2.5rem',
+    fontWeight: 'bold',
+    fontFamily: 'Orbitron',
+    background: 'linear-gradient(to right,#fff ,var(--titleSection-color))',
+    WebkitBackgroundClip: 'text',
+    WebkitTextFillColor: 'transparent',
+    backgroundClip: 'text',
+    textFillColor: 'transparent',
+})
 
 const CardUl = styled('ul')({
     display: 'flex',
@@ -51,7 +62,7 @@ const Duvidas = ({ item }: Props) => {
 
     return (
         <ContainerDuvidas>
-            <Typography variant='body1' fontSize={'2.5rem'} textAlign={'center'} fontWeight={'bold'}>Duvidas?</Typography>
+            <Titulo>Duvidas?</Titulo>
             <CardUl>
 
                 {

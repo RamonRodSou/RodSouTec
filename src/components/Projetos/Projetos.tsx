@@ -14,15 +14,16 @@ const BoxContainer = styled(Box)({
     justifyContent: 'center', 
     padding: '2rem',
     marginTop:'4rem',
-    borderRadius: '10px',
+    borderRadius:'5px',
     boxShadow: '0.25rem 0.37rem 1.25rem #00000036 '
 })
 
-const Titulo = styled('h1')({
+const Titulo = styled('h2')({
+    marginTop:0,
     fontSize: '2.5rem',
     fontWeight: 'bold',
     fontFamily: 'Orbitron',
-    background: 'linear-gradient(to right,#fff ,#ffd0b9)',
+    background: 'linear-gradient(to right,#fff ,var(--titleSection-color))',
     WebkitBackgroundClip: 'text',
     WebkitTextFillColor: 'transparent',
     backgroundClip: 'text',
@@ -32,7 +33,7 @@ const Titulo = styled('h1')({
 const BoxProject = styled(Box)({
     display: 'flex',
     alignItems: 'center',
-    justifyContent: 'center',
+    justifyContent: 'center', 
     width: '100%',
     flexWrap: 'wrap',
     gap: '2rem',
