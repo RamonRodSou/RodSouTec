@@ -13,7 +13,7 @@ const mockFetchList = vi.fn(fetchListVantagens).mockImplementation(
 describe("Testando Componente Vantagens", () => {
 
 
-    it("Deve haver 12 elementos", async () => {
+    it("Deve haver 6 elementos", async () => {
         render(<Vantagens item={mockFetchList} />)
 
         const element = await screen.findAllByRole('listitem')

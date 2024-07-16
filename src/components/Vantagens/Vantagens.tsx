@@ -13,7 +13,7 @@ const CardUl = styled('ul')({
     justifyContent:'center',
     flexWrap:'wrap',
     padding:'0',
-    boxShadow: '0.25rem 0.37rem 1.25rem #00000036 '
+    margin:'4rem 0'
 
 })
 
@@ -25,16 +25,13 @@ const CardList = styled('li')({
     flexDirection: 'column',
     padding: '1rem',
     transition: 'transform 0.3s ease-in-out',
-    // backgroundColor: 'var(--cardBoxBg-color)',
 
     '&:nth-child(odd)': {
-        // backgroundColor:'var(--cardBoxBgVan-color)',
         background:' linear-gradient(40deg, var(--cardBoxBgVan-color), var(--cardBoxBgVan2-color))',
 
     },
 
     '&:nth-child(even)': {
-        // backgroundColor: 'var(--cardBoxBgVan2-color)',
         background:' linear-gradient(40deg, var(--cardBoxBgVan2-color), var(--cardBoxBgVan-color))',
 
     },
