@@ -1,4 +1,4 @@
-import { fireEvent, render, screen } from "@testing-library/react"
+import { render, screen } from "@testing-library/react"
 import FaleConosco from "./FaleConosco"
 import { vi } from 'vitest';
 
@@ -34,12 +34,6 @@ describe("Testando componente FaleConosco", ()=> {
         expect(inputs).toHaveLength(1)
     })
 
-
-    // it("Deve ser dar um alerta do click no btn", async() => {
-    //     render(<FaleConosco/>)
-    //     const button = await screen.findByRole("button")
-    //     fireEvent.click(button)
-    //     expect(navigateMock).toHaveBeenCalledTimes(1)
-    // })
+ö
 
 })

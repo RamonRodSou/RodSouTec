@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
-import { Grid, styled, Typography } from '@mui/material';
-import { fetchListSolution } from '../../service/fetchList';
-import ISolution from '../../interface/ISolution';
+import { Grid, styled, Typography } from '@mui/material'
+import { fetchListSolution } from '../../service/fetchList'
+import ISolution from '../../interface/ISolution'
 
 type Props = {
     item?: () => Promise<ISolution[]>
@@ -38,13 +38,13 @@ const Solutions = ({ item }: Props) => {
 
     useEffect(() => {
         (async () => {
-            const response = await fetchListSolution();
-            setItems(response);
-        })();
+            const response = await fetchListSolution()
+            setItems(response)
+        })()
     }, [item])
 
     return (
-        <CardUl         >
+        <CardUl>
             {
                 items.map((item) => (
                     <CardList key={item.id} >

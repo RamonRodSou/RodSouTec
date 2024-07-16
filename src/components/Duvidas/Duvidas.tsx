@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import { Box, Grid, styled, Typography } from '@mui/material';
+import { Accordion, AccordionDetails, AccordionSummary, Box, Grid, styled, Typography } from '@mui/material';
 import { fetchListDuvidas } from '../../service/fetchList';
 import IDuvidas from '../../interface/IDuvidas';
 
@@ -10,17 +10,17 @@ type Props = {
 
 const ContainerDuvidas = styled(Box)({
     display: 'flex',
-    justifyContent: 'center',
+    justifyContent: 'flex-start',
     flexWrap: 'wrap',
-    padding: '3rem 0',
+    padding: '2rem',
     boxShadow: '0.25rem 0.37rem 1.25rem #00000036 ',
     margin: '3rem 0 ',
-    borderRadius:'5px',
+    borderRadius: '5px',
 
 
 })
 const Titulo = styled('h2')({
-    marginTop:0,
+    marginTop: 0,
     fontSize: '2.5rem',
     fontWeight: 'bold',
     fontFamily: 'Orbitron',
@@ -31,25 +31,37 @@ const Titulo = styled('h2')({
     textFillColor: 'transparent',
 })
 
-const CardUl = styled('ul')({
-    display: 'flex',
-    justifyContent: 'center',
-    flexWrap: 'wrap',
-
-
+const StyledAccordion = styled(Accordion)({
+    background: 'transparent',
+    boxShadow: 'none',
+    width: '100%',
+    color: '#fff',
+    '&:not(:last-child)': {
+        borderBottom: 0,
+    },
+    '&:before': {
+        display: 'none',
+    },
 })
 
-const CardList = styled('li')({
-    width: '45%',
-    display: 'flex',
-    justifyContent: 'center',
-    alignItems: 'flex-start',
-    flexDirection: 'column',
-    padding: '1rem',
-    transition: 'transform 0.3s ease-in-out',
-
-
+const StyledAccordionSummary = styled(AccordionSummary)({
+    background: 'transparent',
+    borderBottom: '1px solid rgba(0, 0, 0, .125)',
+    '&.Mui-expanded': {
+        minHeight: 56,
+    },
+    '& .MuiAccordionSummary-content': {
+        margin: '12px 0',
+    },
 })
+
+const StyledAccordionDetails = styled(AccordionDetails)({
+    background: 'transparent',
+    padding: '8px 16px',
+    margin: '0 1rem'
+})
+
+
 const Duvidas = ({ item }: Props) => {
     const [items, setItems] = useState<IDuvidas[]>([])
 
@@ -63,17 +75,23 @@ const Duvidas = ({ item }: Props) => {
     return (
         <ContainerDuvidas>
             <Titulo>Duvidas?</Titulo>
-            <CardUl>
-
+            <Box margin={'0 1rem'}>
                 {
                     items.map((item) => (
-                        <CardList key={item.id} >
-                            <Typography variant='body1' fontSize={'1.5rem'} fontWeight={'bold'}>{item.id} - {item.title}</Typography>
-                            <Typography variant='body2' fontSize={'1rem'} >{item.description}</Typography>
-                        </CardList>
+                        <StyledAccordion key={item.id}>
+                            <StyledAccordionSummary
+                                aria-controls="panel1-content"
+                                id="panel1-header"
+                            >
+                                <Typography variant='body1' fontSize={'1.3rem'}>{item.title}</Typography>
+                            </StyledAccordionSummary>
+                            <StyledAccordionDetails>
+                                <Typography>{item.description}</Typography>
+                            </StyledAccordionDetails>
+                        </StyledAccordion>
                     ))
                 }
-            </CardUl>
+            </Box>
         </ContainerDuvidas>
     )
 }
