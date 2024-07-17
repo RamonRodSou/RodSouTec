@@ -34,6 +34,4 @@ describe("Testando componente FaleConosco", ()=> {
         expect(inputs).toHaveLength(1)
     })
 
-ö
-
 })

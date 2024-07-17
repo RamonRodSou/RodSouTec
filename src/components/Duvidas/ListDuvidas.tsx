@@ -30,12 +30,12 @@ const ListDuvidas: IDuvidas[] = [
     {
         id: 6,
         title: "Posso fazer alterações após a aprovação?",
-        description: "Sim, oferecemos treinamento para usar o CMS e suporte contínuo.",
+        description: "Sim, oferecemos treinamento para usar os recursos do site.",
     },
     {
         id: 7,
         title: "Quantas páginas meu site pode ter?",
-        description: "O número de páginas depende do plano contratado, mas pode ser ilimitado.",
+        description: "O número de páginas depende do contratado, mas pode ser ilimitado.",
     },
     {
         id: 8,
@@ -50,7 +50,7 @@ const ListDuvidas: IDuvidas[] = [
     {
         id: 10,
         title: "Terei que pagar mensalidade após a criação do site?",
-        description: "Sim, para manter o site online, cobrimos hospedagem, domínio, manutenção e suporte, mas a contratação é opcional.",
+        description: "Não, mas o cliente pode fazer uma contratação para manter manutenção e suporte.",
     },
     {
         id: 11,

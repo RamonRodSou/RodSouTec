@@ -4,7 +4,9 @@ import IProject from '../../interface/IProject'
 import { fetchListProject } from '../../service/fetchList'
 
 
-type Props = {}
+type Props = {
+    item?: () => Promise<IProject[]>
+}
 
 const BoxContainer = styled(Box)({
     display: 'flex',
@@ -98,17 +100,17 @@ const MaisProjetosBtn = styled(Button)({
 })
 
 
-const Projetos = (props: Props) => {
+const Projetos = ({ item }: Props) => {
 
-    const [ item, setItem ] = useState<IProject[]>([])
+    const [ items, setItems ] = useState<IProject[]>([])
 
     useEffect(()=> {
         (async() => {
             const response = await fetchListProject()
-            setItem(response)
+            setItems(response)
         })()
 
-    },[item])
+    },[items])
 
     return (
 
@@ -116,13 +118,13 @@ const Projetos = (props: Props) => {
             <Titulo>Projetos</Titulo>
             <BoxProject>
                 {
-                    item.map((item, index)=> (
+                    items.map((items, index)=> (
                         <Box key={index} display={'flex'} justifyContent={'flex-start'} alignItems={'center'} width={'100%'} gap={'10rem'}>
-                        <ImgBox  src={item.img} width={'40%'} height={350} alt='Serviços' />
+                        <ImgBox  src={items.img} width={'40%'} height={350} alt='Serviços' />
                         <Grid display={'flex'} flexDirection={'column'} alignItems={'flex-start'} gap={'2rem'}>
                             <span>
-                                <ProjectName variant='body1'>{item.name}</ProjectName>
-                                <Typography variant='body1'>{item.description}</Typography>
+                                <ProjectName variant='body1'>{items.name}</ProjectName>
+                                <Typography variant='body1'>{items.description}</Typography>
                             </span>
                             <ButtonProjetos>{'>'}</ButtonProjetos>
                         </Grid>

@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from 'react'
-import { Accordion, AccordionDetails, AccordionSummary, Box, Grid, styled, Typography } from '@mui/material';
+import { Accordion, AccordionDetails, AccordionSummary, Box, Grid, Icon, styled, Typography } from '@mui/material';
 import { fetchListDuvidas } from '../../service/fetchList';
 import IDuvidas from '../../interface/IDuvidas';
+import { KeyboardArrowDown } from '@mui/icons-material';
 
 type Props = {
     item?: () => Promise<IDuvidas[]>
@@ -83,7 +84,10 @@ const Duvidas = ({ item }: Props) => {
                                 aria-controls="panel1-content"
                                 id="panel1-header"
                             >
-                                <Typography variant='body1' fontSize={'1.3rem'}>{item.title}</Typography>
+                                <Box display={'flex'} alignItems={'center'} gap={'.5rem'}>
+                                    <KeyboardArrowDown />
+                                    <Typography variant='body1' fontSize={'1.3rem'}>{item.title}</Typography>
+                                </Box>
                             </StyledAccordionSummary>
                             <StyledAccordionDetails>
                                 <Typography>{item.description}</Typography>

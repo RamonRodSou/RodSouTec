@@ -1,20 +1,39 @@
-import { render, screen } from "@testing-library/react"
-import Projetos from "./Projetos"
 
-describe("Testando componente Projetos", () => {
+import { render, screen } from '@testing-library/react'
+import Projetos from './Projetos'
+import { vi } from 'vitest'
+import { fetchListProject } from '../../service/fetchList'
+import listProject from './ListProject'
 
-    it("Deve ter um titulo 'Vantagens'", async ()=> {
-        render(<Projetos/>)
-        const title = await screen.findByText("Projetos")
+const mockFetchList = vi.fn(fetchListProject).mockImplementation(
+    async () => {
+        return listProject
+    }
+)
+
+describe("Testando Componente Projetos", () => {
+
+
+    it("Deve haver 4 imagens", async () => {
+        render(<Projetos item={mockFetchList} />)
+
+        const img = await screen.findAllByRole('img')
+        expect(img).toHaveLength(4)
+    })
+    
+    it("Deve haver um titulo 'Projetos' ", async () => {
+        render(<Projetos item={mockFetchList} />)
+
+        const title = await screen.findByText('Projetos')
         expect(title).toBeInTheDocument()
     })
 
-    // it("Deve ter 4 imgs", async ()=> {
-    //     render(<Projetos/>)
+    it("Deve haver uma descricao 'Oxicom Energia Solar' ", async () => {
+        render(<Projetos item={mockFetchList} />)
 
-    //     const imgs = await screen.findAllByRole('img')
-    //     expect(imgs.length).toBe(4)
-    // })
+        const description = await screen.findByText(/Oxicom Energia Solar/i)
+        expect(description).toBeInTheDocument()
+    })
 
 
 

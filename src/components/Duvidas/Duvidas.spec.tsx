@@ -16,7 +16,7 @@ describe("Testando Componente Duvidas", () => {
     it("Deve haver 12 elementos", async () => {
         render(<Duvidas item={mockFetchList} />)
 
-        const element = await screen.findAllByRole('listitem')
+        const element = await screen.findAllByRole('paragraph')
         expect(element).toHaveLength(12)
     })
 
