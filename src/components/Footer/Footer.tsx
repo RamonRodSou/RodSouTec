@@ -18,8 +18,8 @@ const Rodape = styled('footer')({
 const Footer = (props: Props) => {
     return (
         <Rodape>
-            <p>© Copyright Ramon Rodrigues - Since 2023</p>
             <Logo size={35}/>
+            <p>© Copyright Ramon Rodrigues - Since 2023</p>
         </Rodape>
     )
 }

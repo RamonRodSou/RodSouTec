@@ -2,11 +2,10 @@ import { Box, styled, Typography } from '@mui/material'
 import LogoImg from '../../assets/img/Logo.webp'
 
 type Props = {
-  size? : number | 60
-
+  size?: number
 }
 
-const TituloLogo = styled(Typography)({
+const TituloLogo = styled(Typography)(({ theme }) => ({
   fontSize: '1.5rem',
   fontWeight: 'bold',
   fontFamily: 'Orbitron',
@@ -16,12 +15,26 @@ const TituloLogo = styled(Typography)({
   WebkitTextFillColor: 'transparent',
   backgroundClip: 'text',
   textFillColor: 'transparent',
-})
+  [theme.breakpoints.down('sm')]: {
+    fontSize: '1rem',
+  },
+}))
+
+const LogoImage = styled('img')(({ theme, size }:{ theme?: any; size: number }) => ({
+  width: size,
+  height: size,
+  [theme.breakpoints.down('sm')]: {
+    width: 30,
+    height: 30,
+  },
+}))
+
 const Logo = (props: Props) => {
+  const size = props.size || 60
   return (
-    <Box display={'flex'} flexDirection={'row'} alignItems={'center'} gap={'.5rem'}>
-        <img src={LogoImg} alt="Logo do Site RodSouDev Tech" width={props.size} height={props.size}/>
-        <TituloLogo>RodSouTech</TituloLogo>
+    <Box display="flex" flexDirection="row" alignItems="center" gap=".5rem">
+      <LogoImage src={LogoImg} alt="Logo do Site RodSouDev Tech" size={size} />
+      <TituloLogo>RodSouTech</TituloLogo>
     </Box>
   )
 }
