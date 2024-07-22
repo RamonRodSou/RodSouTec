@@ -13,11 +13,11 @@ const mockFetchList = vi.fn(fetchListSolution).mockImplementation(
 describe("Testando Componente Solutions", () => {
 
 
-    it("Deve haver 5 elementos", async () => {
+    it("Deve haver 5 img", async () => {
         render(<Solutions item={mockFetchList} />)
 
-        const element = await screen.findAllByRole('listitem')
-        expect(element).toHaveLength(5)
+        const img = await screen.findAllByRole('img')
+        expect(img).toHaveLength(5)
     })
     
     it("Deve haver um titulo 'Criação de Aplicativos' ", async () => {

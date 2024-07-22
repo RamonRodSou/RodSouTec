@@ -12,7 +12,7 @@ const BoxHeader = styled(Box)(({ theme }) => ({
   justifyContent:'space-between',
   margin:'2rem 0',
   
-  [theme.breakpoints.down('sm')]: {
+  [theme.breakpoints.down('md')]: {
     margin:'.7rem 0',
 
   },

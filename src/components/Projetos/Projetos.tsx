@@ -8,7 +8,7 @@ type Props = {
     item?: () => Promise<IProject[]>
 }
 
-const BoxContainer = styled(Box)({
+const BoxContainer = styled(Box)(({ theme }) => ({
     display: 'flex',
     flexDirection: 'column',
     alignItems: 'flex-start',
@@ -16,10 +16,15 @@ const BoxContainer = styled(Box)({
     padding: '2rem',
     marginTop: '4rem',
     borderRadius: '5px',
-    boxShadow: '0.25rem 0.37rem 1.25rem #00000036 '
-})
+    boxShadow: '0.25rem 0.37rem 1.25rem #00000036 ',
 
-const Titulo = styled('h2')({
+    [theme.breakpoints.down('md')]: {
+        alignItems: 'center',
+
+    },
+}))
+
+const Titulo = styled('h2')(({ theme }) => ({
     marginTop: 0,
     fontSize: '2.5rem',
     fontWeight: 'bold',
@@ -29,29 +34,59 @@ const Titulo = styled('h2')({
     WebkitTextFillColor: 'transparent',
     backgroundClip: 'text',
     textFillColor: 'transparent',
-})
 
-const ProjectName = styled(Typography)({
+    [theme.breakpoints.down('sm')]: {
+        textAlign:'center',
+        fontSize: '2rem',
+    }
+}))
+
+const ProjectName = styled(Typography)(({ theme }) => ({
     marginTop: 0,
     fontSize: '2.5rem',
     fontWeight: 'bold',
-    
-})
 
-const BoxProject = styled(Box)({
+    [theme.breakpoints.down('sm')]: {
+        fontSize: '1.5rem',
+    }
+}))
+
+
+const BoxProject = styled(Box)(({ theme }) => ({
     display: 'flex',
     alignItems: 'center',
     justifyContent: 'center',
+
     width: '100%',
     flexWrap: 'wrap',
     gap: '2rem',
     padding: '1rem',
-})
+    [theme.breakpoints.down('md')]: {
+        gap: '5rem',
 
-const ImgBox = styled('img')({
+    },
+}))
+
+const Projeto = styled(Box)(({ theme }) => ({
+    display: 'flex',
+    justifyContent: 'flex-start',
+    alignItems: 'center',
+    width: '100%',
+    gap: '10rem',
+    [theme.breakpoints.down('md')]: {
+        flexDirection: 'column',
+        gap:'1rem'
+    },
+}))
+
+
+
+const ImgBox = styled('img')(({ theme }) => ({
     borderRadius: '10px',
     transition: 'transform 0.3s ease-in-out',
     cursor: 'pointer',
+    width:'40%',
+    height:350,
 
     '&:hover': {
         opacity: 0.9,
@@ -59,7 +94,28 @@ const ImgBox = styled('img')({
 
     },
 
-})
+    [theme.breakpoints.down(900)]: {
+        width:'100%',
+        height:430,
+    },
+
+    [theme.breakpoints.down('sm')]: {
+        height:230,
+    },
+}))
+
+const GridProjectoBtn = styled(Grid)(({ theme }) => ({
+
+    display:'flex',
+    flexDirection:'column',
+    alignItems:'flex-start',
+    gap:'2rem',
+    
+
+    [theme.breakpoints.down('md')]: {
+    },
+}))
+
 
 const ButtonProjetos = styled(Button)({
     border: '1px solid #fff',
@@ -93,7 +149,7 @@ const MaisProjetosBtn = styled(Button)({
     '&:hover': {
         opacity: 0.9,
         transform: 'scale(.9)',
-        color:'#fefefe'
+        color: '#fefefe'
 
     },
 
@@ -102,15 +158,15 @@ const MaisProjetosBtn = styled(Button)({
 
 const Projetos = ({ item }: Props) => {
 
-    const [ items, setItems ] = useState<IProject[]>([])
+    const [items, setItems] = useState<IProject[]>([])
 
-    useEffect(()=> {
-        (async() => {
+    useEffect(() => {
+        (async () => {
             const response = await fetchListProject()
             setItems(response)
         })()
 
-    },[items])
+    }, [items])
 
     return (
 
@@ -118,17 +174,17 @@ const Projetos = ({ item }: Props) => {
             <Titulo>Projetos</Titulo>
             <BoxProject>
                 {
-                    items.map((items, index)=> (
-                        <Box key={index} display={'flex'} justifyContent={'flex-start'} alignItems={'center'} width={'100%'} gap={'10rem'}>
-                        <ImgBox  src={items.img} width={'40%'} height={350} alt='Serviços' />
-                        <Grid display={'flex'} flexDirection={'column'} alignItems={'flex-start'} gap={'2rem'}>
-                            <span>
-                                <ProjectName variant='body1'>{items.name}</ProjectName>
-                                <Typography variant='body1'>{items.description}</Typography>
-                            </span>
-                            <ButtonProjetos>{'>'}</ButtonProjetos>
-                        </Grid>
-                    </Box>
+                    items.map((items, index) => (
+                        <Projeto key={index}>
+                            <ImgBox src={items.img} alt='Serviços' />
+                            <GridProjectoBtn>
+                                <span style={{'display':'flex', 'flexDirection':'column','gap':'1rem'}}>
+                                    <ProjectName variant='body1'>{items.name}</ProjectName>
+                                    <Typography variant='body1'>{items.description}</Typography>
+                                </span>
+                                <ButtonProjetos>{'>'}</ButtonProjetos>
+                            </GridProjectoBtn>
+                        </Projeto>
                     ))
                 }
             </BoxProject>

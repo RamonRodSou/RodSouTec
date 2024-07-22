@@ -8,16 +8,37 @@ type Props = {
     
 }
 
-const CardUl = styled('ul')({
+const CardUl = styled('ul')(({ theme }) => ({
     display:'flex',
     justifyContent:'center',
     flexWrap:'wrap',
     padding:'0',
-    margin:'4rem 0'
+    margin:'4rem 0',
 
-})
 
-const CardList = styled('li')({
+    [theme.breakpoints.down(900)]: {
+
+    },
+
+    [theme.breakpoints.down('sm')]: {
+    },
+}))
+
+
+const Titulo = styled(Typography)(({ theme }) => ({
+
+    variant:'body1',
+    fontSize:'1.5rem',
+    textAlign:'center',
+
+    [theme.breakpoints.down('sm')]: {
+        fontSize:'1rem',
+        marginBottom:'.3rem'
+
+    },
+}))
+
+const CardList = styled('li')(({ theme }) => ({
     width: '31.18%',
     display: 'flex',
     justifyContent: 'center',
@@ -42,7 +63,14 @@ const CardList = styled('li')({
 
     },
 
-})
+
+
+    [theme.breakpoints.down(900)]: {
+        width: '100%',
+
+    },
+}))
+
 const Vantagens = ({ item }: Props) => {
     const [items, setItems] = useState<IVantagem[]>([])
 
@@ -60,7 +88,7 @@ const Vantagens = ({ item }: Props) => {
                     <CardList key={item.id} >
                         <Grid display={'flex'} alignItems={'center'} flexDirection={'column'} justifyContent={'center'} gap={1}>
                             <img src={item.img} alt={item.title} width={50} height={50} />
-                            <Typography variant='body1' fontSize={'1.5rem'} textAlign={'center'}>{item.title}</Typography>
+                            <Titulo>{item.title}</Titulo>
                         </Grid>
                         <Typography variant='body2' textAlign={'center'}>{item.description}</Typography>
                     </CardList>

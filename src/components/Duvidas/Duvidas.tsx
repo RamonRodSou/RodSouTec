@@ -2,14 +2,14 @@ import React, { useEffect, useState } from 'react'
 import { Accordion, AccordionDetails, AccordionSummary, Box, Grid, Icon, styled, Typography } from '@mui/material';
 import { fetchListDuvidas } from '../../service/fetchList';
 import IDuvidas from '../../interface/IDuvidas';
-import { KeyboardArrowDown } from '@mui/icons-material';
+import { KeyboardArrowDown, KeyboardArrowUp } from '@mui/icons-material';
 
 type Props = {
     item?: () => Promise<IDuvidas[]>
 
 }
 
-const ContainerDuvidas = styled(Box)({
+const ContainerDuvidas = styled(Box)(({ theme }) => ({
     display: 'flex',
     justifyContent: 'flex-start',
     flexWrap: 'wrap',
@@ -18,9 +18,16 @@ const ContainerDuvidas = styled(Box)({
     margin: '3rem 0 ',
     borderRadius: '5px',
 
+    [theme.breakpoints.down('sm')]: {
+        justifyContent: 'center',
+        padding: '2rem 0',
 
-})
-const Titulo = styled('h2')({
+    },
+}))
+
+
+
+const Titulo = styled('h2')(({ theme }) => ({
     marginTop: 0,
     fontSize: '2.5rem',
     fontWeight: 'bold',
@@ -30,7 +37,12 @@ const Titulo = styled('h2')({
     WebkitTextFillColor: 'transparent',
     backgroundClip: 'text',
     textFillColor: 'transparent',
-})
+
+    [theme.breakpoints.down('sm')]: {
+        textAlign:'center',
+        fontSize: '2rem',
+    }
+}))
 
 const StyledAccordion = styled(Accordion)({
     background: 'transparent',
@@ -56,15 +68,49 @@ const StyledAccordionSummary = styled(AccordionSummary)({
     },
 })
 
-const StyledAccordionDetails = styled(AccordionDetails)({
+
+const DuvidasPadroes = styled(Typography)(({ theme }) => ({
+    variant: 'body1',
+    fontSize: '1.3rem',
+
+    [theme.breakpoints.down('sm')]: {
+        fontSize: '1rem',
+    },
+}))
+
+
+const Descricao = styled(Typography)(({ theme }) => ({
+    variant: 'body2',
+    margin: '0 1rem',
+
+    [theme.breakpoints.down('sm')]: {
+        fontSize: '.8rem',
+    }
+}))
+
+const StyledAccordionDetails = styled(AccordionDetails)(({ theme }) => ({
     background: 'transparent',
     padding: '8px 16px',
-    margin: '0 1rem'
-})
+    margin: '0 1rem',
+
+    [theme.breakpoints.down('sm')]: {
+        margin: '-1rem 1rem .5rem ',
+    }
+}))
 
 
 const Duvidas = ({ item }: Props) => {
     const [items, setItems] = useState<IDuvidas[]>([])
+    const [isArrow, setIsArrow] = useState<{ [key: number]: boolean }>({})
+
+
+    function handleArrow (id: number) {
+
+        setIsArrow((prev) => ({
+            ...prev,
+            [id]: !prev[id],
+          }))
+    }
 
     useEffect(() => {
         (async () => {
@@ -79,18 +125,18 @@ const Duvidas = ({ item }: Props) => {
             <Box margin={'0 1rem'}>
                 {
                     items.map((item) => (
-                        <StyledAccordion key={item.id}>
+                        <StyledAccordion key={item.id}  expanded={isArrow[item.id]} onClick={()=>handleArrow(item.id)}>
                             <StyledAccordionSummary
                                 aria-controls="panel1-content"
                                 id="panel1-header"
                             >
                                 <Box display={'flex'} alignItems={'center'} gap={'.5rem'}>
-                                    <KeyboardArrowDown />
-                                    <Typography variant='body1' fontSize={'1.3rem'}>{item.title}</Typography>
+                                    {isArrow[item.id] ? <KeyboardArrowUp /> : <KeyboardArrowDown />}
+                                    <DuvidasPadroes>{item.title}</DuvidasPadroes>
                                 </Box>
                             </StyledAccordionSummary>
                             <StyledAccordionDetails>
-                                <Typography>{item.description}</Typography>
+                                <Descricao>{item.description}</Descricao>
                             </StyledAccordionDetails>
                         </StyledAccordion>
                     ))

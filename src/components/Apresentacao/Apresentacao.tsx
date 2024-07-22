@@ -12,7 +12,7 @@ const BoxApresentacao = styled(Box)(({ theme }) => ({
   margin: '3rem 2rem',
   gap: '5rem',
 
-  [theme.breakpoints.down('sm')]: {
+  [theme.breakpoints.down('md')]: {
 
     flexDirection: 'column-reverse',
 },
@@ -28,7 +28,7 @@ const TituloImpactante = styled(Typography)(({ theme }) => ({
   WebkitTextFillColor: 'transparent',
   backgroundClip: 'text',
   textFillColor: 'transparent',
-  [theme.breakpoints.down('sm')]: {
+  [theme.breakpoints.down('md')]: {
     fontSize: '2rem',
     width: '100%',
   },
@@ -55,7 +55,7 @@ const BoxImg = styled(Box)(({ theme }) => ({
   justifyContent:'center',
   gap:5,
   
-  [theme.breakpoints.down('sm')]: {
+  [theme.breakpoints.down(1012)]: {
 
     display:'none'
   },
@@ -65,7 +65,7 @@ const BoxImg = styled(Box)(({ theme }) => ({
 const ImgApresentacao = styled('img')(({ theme, sizeW, sizeH }:{ theme?: any; sizeW: number; sizeH: number }) => ({
   width: sizeW,
   height: sizeH,
-  [theme.breakpoints.down('sm')]: {
+  [theme.breakpoints.down('md')]: {
     width: 300,
     height: 250,
   },

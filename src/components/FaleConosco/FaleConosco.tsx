@@ -3,20 +3,28 @@ import React, { useState } from 'react'
 import contato from '../../assets/img/contato.png'
 type Props = {}
 
-const ContainerFaleConosco = styled(Box)({
+const ContainerFaleConosco = styled(Box)(({ theme }) => ({
     backgroundColor: 'var(--faleConoscoSecBg-color)',
     padding: '4rem',
     display: 'flex',
     flexDirection: 'column',
     alignItems: 'center',
-    borderRadius:'5px',
+    borderRadius: '5px',
     margin: '3rem 0 ',
     boxShadow: '0.25rem 0.37rem 1.25rem #00000036 ',
 
-})
+    [theme.breakpoints.down(900)]: {
+        padding: '4rem 1rem  ',
+    },
 
-const Titulo = styled('h2')({
-    marginTop:0,
+    [theme.breakpoints.down('sm')]: {
+        padding: '1rem',
+    }
+}))
+
+
+const Titulo = styled('h2')(({ theme }) => ({
+    marginTop: 0,
     fontSize: '2.5rem',
     fontWeight: 'bold',
     fontFamily: 'Orbitron',
@@ -25,16 +33,64 @@ const Titulo = styled('h2')({
     WebkitTextFillColor: 'transparent',
     backgroundClip: 'text',
     textFillColor: 'transparent',
-    
-})
 
-const FormFaleC = styled(Box)({
+    [theme.breakpoints.down('sm')]: {
+        textAlign: 'center',
+        fontSize: '2rem',
+
+    }
+}))
+
+const BoxFaleConosco = styled(Box)(({ theme }) => ({
+    display: 'flex',
+    width: '60%',
+    alignItems: 'space-between',
+    justifyContent: 'center',
+    gap: '2rem',
+
+    [theme.breakpoints.down(900)]: {
+        width: '90%',
+
+    },
+
+    [theme.breakpoints.down('sm')]: {
+        flexDirection: 'column-reverse',
+        width: '100%',
+
+    }
+}))
+
+const Img = styled('img')((({ theme }) => ({
+
+
+    [theme.breakpoints.down(900)]: {
+        width: '50%',
+    },
+
+    [theme.breakpoints.down('sm')]: {
+        width: '100%',
+        height: '300px'
+    }
+})))
+
+
+
+const FormFaleC = styled(Box)((({ theme }) => ({
 
     width: '50%',
     display: 'flex',
     flexDirection: 'column',
     alignItems: 'space-between',
-})
+
+    
+    [theme.breakpoints.down(900)]: {
+        width: '80%',
+    },
+
+    [theme.breakpoints.down('sm')]: {
+        width: '100%',
+    }
+})))
 
 
 const FaleConosco = (props: Props) => {
@@ -44,14 +100,14 @@ const FaleConosco = (props: Props) => {
     const [celphone, setCelphone] = useState<number | undefined>()
     const [message, setMessage] = useState<string>('')
 
-    
+
     function handleSubmit() {
     }
 
     return (
         <ContainerFaleConosco>
             <Titulo>Fale Conosco</Titulo>
-            <Box display={'flex'} width={'60%'} alignItems={'space-between'} justifyContent={'center'} gap={'2rem'}>
+            <BoxFaleConosco >
                 <FormFaleC onSubmit={handleSubmit}>
                     <Box marginBottom="1rem">
                         <TextField
@@ -90,13 +146,12 @@ const FaleConosco = (props: Props) => {
                             fullWidth
                         />
                     </Box>
-                    <Button type="submit" variant="contained" color="info" style={{'marginTop':'1rem'}}>
+                    <Button type="submit" variant="contained" color="info" style={{ 'marginTop': '1rem' }}>
                         Enviar
                     </Button>
                 </FormFaleC>
-                <img src={contato} alt='Imagem contato' />
-
-            </Box>
+                <Img src={contato} alt='Imagem contato' />
+            </BoxFaleConosco>
         </ContainerFaleConosco>
     )
 }
