@@ -1,8 +1,5 @@
 import { styled } from '@mui/material'
-import React from 'react'
 import Logo from '../Logo/Logo'
-
-type Props = {}
 
 const Rodape = styled('footer')(({ theme }) => ({
     textAlign: 'center',
@@ -23,7 +20,7 @@ const Rodape = styled('footer')(({ theme }) => ({
 
 
 
-const Footer = (props: Props) => {
+const Footer = () => {
     return (
         <Rodape>
             <Logo size={35} />

@@ -34,9 +34,7 @@ const DrawerHeader = styled('div')(({ theme }) => ({
   justifyContent: 'flex-end',
 }))
 
-type Props = {}
-
-const Navegacao = (props: Props) => {
+const Navegacao = () => {
   const [drawerOpen, setDrawerOpen] = useState(false)
   const theme = useTheme()
   const isMobile = useMediaQuery(theme.breakpoints.down('md'))

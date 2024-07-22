@@ -3,9 +3,6 @@ import tech from '../../assets/img/Tech.webp'
 import Grid2 from '@mui/material/Unstable_Grid2/Grid2'
 import CirculoOval from '../CirculoOval/CirculoOval'
 
-
-type Props = {}
-
 const BoxApresentacao = styled(Box)(({ theme }) => ({
 
   display: 'flex',
@@ -73,7 +70,7 @@ const ImgApresentacao = styled('img')(({ theme, sizeW, sizeH }:{ theme?: any; si
 
 
 
-const Apresentacao = (props: Props) => {
+const Apresentacao = () => {
   return (
     <BoxApresentacao  >
       <Grid display={'flex'} flexDirection={'column'} alignItems={'flex-start'} justifyContent={'center'} gap={'1rem'}>

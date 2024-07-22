@@ -1,7 +1,6 @@
 import { Box, Button, styled, TextField } from '@mui/material'
-import React, { useState } from 'react'
+import { useState } from 'react'
 import contato from '../../assets/img/contato.png'
-type Props = {}
 
 const ContainerFaleConosco = styled(Box)(({ theme }) => ({
     backgroundColor: 'var(--faleConoscoSecBg-color)',
@@ -22,7 +21,6 @@ const ContainerFaleConosco = styled(Box)(({ theme }) => ({
     }
 }))
 
-
 const Titulo = styled('h2')(({ theme }) => ({
     marginTop: 0,
     fontSize: '2.5rem',
@@ -37,7 +35,6 @@ const Titulo = styled('h2')(({ theme }) => ({
     [theme.breakpoints.down('sm')]: {
         textAlign: 'center',
         fontSize: '2rem',
-
     }
 }))
 
@@ -50,19 +47,15 @@ const BoxFaleConosco = styled(Box)(({ theme }) => ({
 
     [theme.breakpoints.down(900)]: {
         width: '90%',
-
     },
 
     [theme.breakpoints.down('sm')]: {
         flexDirection: 'column-reverse',
         width: '100%',
-
     }
 }))
 
 const Img = styled('img')((({ theme }) => ({
-
-
     [theme.breakpoints.down(900)]: {
         width: '50%',
     },
@@ -76,13 +69,11 @@ const Img = styled('img')((({ theme }) => ({
 
 
 const FormFaleC = styled(Box)((({ theme }) => ({
-
     width: '50%',
     display: 'flex',
     flexDirection: 'column',
     alignItems: 'space-between',
 
-    
     [theme.breakpoints.down(900)]: {
         width: '80%',
     },
@@ -93,13 +84,12 @@ const FormFaleC = styled(Box)((({ theme }) => ({
 })))
 
 
-const FaleConosco = (props: Props) => {
+const FaleConosco = () => {
 
     const [name, setName] = useState<string>('')
     const [email, setEmail] = useState<string>('')
     const [celphone, setCelphone] = useState<number | undefined>()
     const [message, setMessage] = useState<string>('')
-
 
     function handleSubmit() {
     }

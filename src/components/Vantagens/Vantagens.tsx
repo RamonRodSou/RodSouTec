@@ -1,28 +1,19 @@
-import React, { useEffect, useState } from 'react'
+import { useEffect, useState } from 'react'
 import { Grid, styled, Typography } from '@mui/material';
 import { fetchListVantagens } from '../../service/fetchList';
 import IVantagem from '../../interface/IVantagem';
 
 type Props = {
     item?: () => Promise<IVantagem[]>
-    
 }
 
-const CardUl = styled('ul')(({ theme }) => ({
+const CardUl = styled('ul')({
     display:'flex',
     justifyContent:'center',
     flexWrap:'wrap',
     padding:'0',
     margin:'4rem 0',
-
-
-    [theme.breakpoints.down(900)]: {
-
-    },
-
-    [theme.breakpoints.down('sm')]: {
-    },
-}))
+})
 
 
 const Titulo = styled(Typography)(({ theme }) => ({
@@ -34,7 +25,6 @@ const Titulo = styled(Typography)(({ theme }) => ({
     [theme.breakpoints.down('sm')]: {
         fontSize:'1rem',
         marginBottom:'.3rem'
-
     },
 }))
 
@@ -49,25 +39,19 @@ const CardList = styled('li')(({ theme }) => ({
 
     '&:nth-child(odd)': {
         background:' linear-gradient(40deg, var(--cardBoxBgVan-color), var(--cardBoxBgVan2-color))',
-
     },
 
     '&:nth-child(even)': {
         background:' linear-gradient(40deg, var(--cardBoxBgVan2-color), var(--cardBoxBgVan-color))',
-
     },
 
     '&:hover': {
         background:' linear-gradient(180deg, var(--cardBoxBgVan-color), var(--cardBoxBgVan2-color))',
         transform: 'scale(.9)'
-
     },
-
-
 
     [theme.breakpoints.down(900)]: {
         width: '100%',
-
     },
 }))
 

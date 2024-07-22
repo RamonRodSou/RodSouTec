@@ -1,10 +1,6 @@
-import React from 'react'
 import Logo from '../Logo/Logo'
 import { Box, styled } from '@mui/material'
 import Navegacao from '../Navegacao/Navegacao'
-
-type Props = {}
-
 
 const BoxHeader = styled(Box)(({ theme }) => ({
   display:'flex',
@@ -18,7 +14,7 @@ const BoxHeader = styled(Box)(({ theme }) => ({
   },
 }))
 
-const Header = (props: Props) => {
+const Header = () => {
   return (
     <BoxHeader> 
       <Logo/>

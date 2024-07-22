@@ -1,12 +1,7 @@
 import { Box, Button, Grid, styled, Typography } from '@mui/material'
-import React, { useEffect, useState } from 'react'
+import { useEffect, useState } from 'react'
 import IProject from '../../interface/IProject'
 import { fetchListProject } from '../../service/fetchList'
-
-
-type Props = {
-    item?: () => Promise<IProject[]>
-}
 
 const BoxContainer = styled(Box)(({ theme }) => ({
     display: 'flex',
@@ -51,7 +46,6 @@ const ProjectName = styled(Typography)(({ theme }) => ({
     }
 }))
 
-
 const BoxProject = styled(Box)(({ theme }) => ({
     display: 'flex',
     alignItems: 'center',
@@ -78,8 +72,6 @@ const Projeto = styled(Box)(({ theme }) => ({
         gap:'1rem'
     },
 }))
-
-
 
 const ImgBox = styled('img')(({ theme }) => ({
     borderRadius: '10px',
@@ -130,11 +122,9 @@ const ButtonProjetos = styled(Button)({
     '&:hover': {
         opacity: 0.9,
         transform: 'scale(.9)'
-
     },
 
 })
-
 
 const MaisProjetosBtn = styled(Button)({
     border: '1px solid var(--maisProjetos-color)',
@@ -150,13 +140,10 @@ const MaisProjetosBtn = styled(Button)({
         opacity: 0.9,
         transform: 'scale(.9)',
         color: '#fefefe'
-
     },
-
 })
 
-
-const Projetos = ({ item }: Props) => {
+const Projetos = () => {
 
     const [items, setItems] = useState<IProject[]>([])
 

@@ -1,4 +1,3 @@
-import React from 'react'
 import Header from '../components/Header/Header'
 import Apresentacao from '../components/Apresentacao/Apresentacao'
 import { Container } from '@mui/material'
@@ -9,9 +8,8 @@ import Duvidas from '../components/Duvidas/Duvidas'
 import FaleConosco from '../components/FaleConosco/FaleConosco'
 import Footer from '../components/Footer/Footer'
 
-type Props = {}
 
-const Home = (props: Props) => {
+const Home = () => {
     return (
         <Container maxWidth="xl">
             <Header />

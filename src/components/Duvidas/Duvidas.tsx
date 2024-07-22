@@ -1,5 +1,5 @@
-import React, { useEffect, useState } from 'react'
-import { Accordion, AccordionDetails, AccordionSummary, Box, Grid, Icon, styled, Typography } from '@mui/material';
+import { useEffect, useState } from 'react'
+import { Accordion, AccordionDetails, AccordionSummary, Box, styled, Typography } from '@mui/material';
 import { fetchListDuvidas } from '../../service/fetchList';
 import IDuvidas from '../../interface/IDuvidas';
 import { KeyboardArrowDown, KeyboardArrowUp } from '@mui/icons-material';
