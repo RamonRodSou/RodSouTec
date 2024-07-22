@@ -12,21 +12,21 @@ type Props = {
     item?: () => Promise<ISolution[]>
 }
 
-const CardUl = styled(Box)({
+const CardBox = styled(Box)({
     display: 'flex',
     justifyContent: 'center',
     padding: '0',
     listStyleType: 'none',
 })
 
-const SliderCardUl = styled(Slider)({
+const SliderCardSlader = styled(Slider)({
     padding: '.5rem',
     listStyleType: 'none',
     width: '100%',
     margin: '0 auto',
 })
 
-const CardList = styled(Box)(({ theme }) => ({
+const Card = styled(Box)(({ theme }) => ({
     width: '100%',
     display: 'flex',
     gap: '1rem',
@@ -44,7 +44,8 @@ const CardList = styled(Box)(({ theme }) => ({
     [theme.breakpoints.down('md')]: {
         padding: '.5rem 0',
         height: '120px',
-        borderRadius: '0'
+        borderRadius: '0',
+
     },
 }))
 
@@ -54,7 +55,7 @@ const BoxImgTitulo = styled(Box)(({ theme }) => ({
     gap: '1rem',
     alignItems: 'center',
     [theme.breakpoints.down('md')]: {
-        padding: '.5rem 0'
+        padding: '.5rem 1rem'
     },
 }))
 
@@ -86,29 +87,29 @@ const Solutions = ({ item }: Props) => {
     return (
         <Box>
             {isMediumScreen || isSmallScreen ? (
-                <SliderCardUl {...settings}>
+                <SliderCardSlader {...settings}>
                     {items.map((item) => (
-                        <CardList key={item.id}>
+                        <Card key={item.id}>
                             <BoxImgTitulo>
                                 <img src={item.img} alt={item.name} width={50} height={50} />
                                 <Typography variant='body1'>{item.name}</Typography>
                             </BoxImgTitulo>
-                            <Typography variant='body2' padding={'0 .5rem'}>{item.description}</Typography>
-                        </CardList>
+                            <Typography variant='body2'  padding={'0 .8rem'}>{item.description}</Typography>
+                        </Card>
                     ))}
-                </SliderCardUl>
+                </SliderCardSlader>
             ) : (
-                <CardUl>
+                <CardBox>
                     {items.map((item) => (
-                        <CardList key={item.id}>
+                        <Card key={item.id}>
                             <BoxImgTitulo>
-                                <img src={item.img} alt={item.name} width={50} height={50} />
+                                <img src={item.img} alt={item.name} width={50} height={50}  />
                                 <Typography variant='body1'>{item.name}</Typography>
                             </BoxImgTitulo>
-                            <Typography variant='body2' padding={'0 .5rem'}>{item.description}</Typography>
-                        </CardList>
+                            <Typography variant='body2'  padding={'0 .5rem'}>{item.description}</Typography>
+                        </Card>
                     ))}
-                </CardUl>
+                </CardBox>
             )}
         </Box>
     )
