@@ -1,6 +1,7 @@
 import { Box, Button, styled, TextField } from '@mui/material'
 import { useState } from 'react'
 import contato from '../../assets/img/contato.png'
+import AoEnviarForm from '../../service/AoEnviarForm'
 
 const ContainerFaleConosco = styled(Box)(({ theme }) => ({
     backgroundColor: 'var(--faleConoscoSecBg-color)',
@@ -66,9 +67,7 @@ const Img = styled('img')((({ theme }) => ({
     }
 })))
 
-
-
-const FormFaleC = styled(Box)((({ theme }) => ({
+const FormFaleC = styled('form')((({ theme }) => ({
     width: '50%',
     display: 'flex',
     flexDirection: 'column',
@@ -83,22 +82,35 @@ const FormFaleC = styled(Box)((({ theme }) => ({
     }
 })))
 
-
 const FaleConosco = () => {
-
     const [name, setName] = useState<string>('')
     const [email, setEmail] = useState<string>('')
     const [celphone, setCelphone] = useState<number | undefined>()
     const [message, setMessage] = useState<string>('')
 
-    function handleSubmit() {
+    async function handleSubmit(event: React.FormEvent) {
+        event.preventDefault()
+        const dados = {
+            nome: name,
+            email: email,
+            telefone: celphone || 0,
+            servico: message,
+            data: new Date().toISOString()
+        }
+        const enviar = AoEnviarForm(dados)
+        await enviar
+        alert('Mensagem enviada com sucesso!')
+        setName('')
+        setEmail('')
+        setCelphone(undefined)
+        setMessage('')
     }
 
     return (
         <ContainerFaleConosco>
             <Titulo>Fale Conosco</Titulo>
             <BoxFaleConosco >
-                <FormFaleC onSubmit={handleSubmit}>
+                <FormFaleC  onSubmit={handleSubmit}>
                     <Box marginBottom="1rem">
                         <TextField
                             label="Seu nome"
@@ -128,7 +140,8 @@ const FaleConosco = () => {
                     </Box>
                     <Box marginTop="1rem" >
                         <TextField
-                            label="Descrição"
+                            label="Serviço"
+                            required
                             multiline
                             rows={4}
                             value={message}
@@ -136,7 +149,7 @@ const FaleConosco = () => {
                             fullWidth
                         />
                     </Box>
-                    <Button type="submit" variant="contained" color="info" style={{ 'marginTop': '1rem' }}>
+                    <Button type="submit" variant="contained" color="info" style={{ marginTop: '1rem' }}>
                         Enviar
                     </Button>
                 </FormFaleC>

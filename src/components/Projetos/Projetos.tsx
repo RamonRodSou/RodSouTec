@@ -147,6 +147,11 @@ const Projetos = () => {
 
     const [items, setItems] = useState<IProject[]>([])
 
+    function handleOpenPdf(pdf:string):void {
+        window.open(`../../../public/project/${pdf}.pdf`, '_blank')
+    }
+
+
     useEffect(() => {
         (async () => {
             const response = await fetchListProject()
@@ -169,7 +174,7 @@ const Projetos = () => {
                                     <ProjectName variant='body1'>{items.name}</ProjectName>
                                     <Typography variant='body1'>{items.description}</Typography>
                                 </span>
-                                <ButtonProjetos>{'>'}</ButtonProjetos>
+                                <ButtonProjetos onClick={() => handleOpenPdf(items.arquivo)}>{'>'}</ButtonProjetos>
                             </GridProjectoBtn>
                         </Projeto>
                     ))

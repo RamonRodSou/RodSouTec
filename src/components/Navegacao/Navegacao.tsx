@@ -69,8 +69,9 @@ const Navegacao = () => {
 
   return (
     <Root>
-      <Barnav position="static">
-        <Toolbar>
+      <Barnav position="static" >
+        <Toolbar
+        >
           {isMobile ? (
             <>
               <IconButton
@@ -78,8 +79,9 @@ const Navegacao = () => {
                 color="inherit"
                 aria-label="menu"
                 onClick={toggleDrawer(true)}
+                sx={{'padding':'0'}}
               >
-                <MenuIcon />
+              <MenuIcon sx={{'fontSize':'30px', }}/>
               </IconButton>
               <Drawer
                 anchor="right"

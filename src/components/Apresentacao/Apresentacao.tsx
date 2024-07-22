@@ -1,4 +1,4 @@
-import { Box, Button, Grid, styled, Typography } from '@mui/material'
+import { Box, Link, Grid, styled, Typography } from '@mui/material'
 import tech from '../../assets/img/Tech.webp'
 import Grid2 from '@mui/material/Unstable_Grid2/Grid2'
 import CirculoOval from '../CirculoOval/CirculoOval'
@@ -31,7 +31,7 @@ const TituloImpactante = styled(Typography)(({ theme }) => ({
   },
 }))
 
-const FaleConosco = styled(Button)({
+const FaleConosco = styled(Link)({
   backgroundColor: 'var(--faleConoscoBg-color)',
   color: '#fff',
   padding: '1rem 2rem',
@@ -80,7 +80,7 @@ const Apresentacao = () => {
         <Typography variant='body1' >
           Através de uma metodologia de trabalho ágil e focada em resultados.
         </Typography>
-        <FaleConosco>
+        <FaleConosco href='https://api.whatsapp.com/send/?phone=5521972923210&text=Ol%C3%A1+RodSou+Tech.+%20Gostaria+de+informa%C3%A7%C3%B5es+sobre+cria%C3%A7%C3%A3o+de+sites+e+aplicativos.&type=phone_number&app_absent=0'>
           Fale Conosco
         </FaleConosco>
       </Grid>
