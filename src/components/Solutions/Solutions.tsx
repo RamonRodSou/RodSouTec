@@ -17,16 +17,13 @@ const CardUl = styled(Box)({
     justifyContent: 'center',
     padding: '0',
     listStyleType: 'none',
-
 })
 
 const SliderCardUl = styled(Slider)({
-
     padding: '.5rem',
     listStyleType: 'none',
     width: '100%',
     margin: '0 auto',
-
 })
 
 const CardList = styled(Box)(({ theme }) => ({
@@ -35,7 +32,6 @@ const CardList = styled(Box)(({ theme }) => ({
     gap: '1rem',
     justifyContent: 'flex-start',
     flexDirection: 'column',
-
     padding: '1rem',
     margin: '.2rem',
     borderRadius: '5px',
@@ -52,13 +48,11 @@ const CardList = styled(Box)(({ theme }) => ({
     },
 }))
 
-
 const BoxImgTitulo = styled(Box)(({ theme }) => ({
     width: '100%',
     display: 'flex',
     gap: '1rem',
     alignItems: 'center',
-
     [theme.breakpoints.down('md')]: {
         padding: '.5rem 0'
     },
@@ -67,7 +61,8 @@ const BoxImgTitulo = styled(Box)(({ theme }) => ({
 const Solutions = ({ item }: Props) => {
     const [items, setItems] = useState<ISolution[]>([])
     const theme = useTheme()
-    const isMobile = useMediaQuery(theme.breakpoints.down('md'))
+    const isSmallScreen = useMediaQuery(theme.breakpoints.down('sm'))
+    const isMediumScreen = useMediaQuery(theme.breakpoints.between('sm', 'md'))
 
     useEffect(() => {
         (async () => {
@@ -75,10 +70,6 @@ const Solutions = ({ item }: Props) => {
             setItems(response)
         })()
     }, [item])
-
-    const isMediumScreen = useMediaQuery('(max-width: 900px)')
-    const isSmallScreen = useMediaQuery(theme.breakpoints.down('sm'))
-
 
     const settings = {
         dots: true,
@@ -89,23 +80,37 @@ const Solutions = ({ item }: Props) => {
         autoplay: true,
         autoplaySpeed: 3000,
         pauseOnHover: true,
-        nextArrow: null,
-        prevArrow: null,
         arrows: false
     }
 
     return (
-        <CardUl as={isMobile ? SliderCardUl : CardUl} {...(isMobile ? settings : {})}>
-            {items.map((item) => (
-                <CardList key={item.id}>
-                    <BoxImgTitulo>
-                        <img src={item.img} alt={item.name} width={50} height={50} />
-                        <Typography variant='body1'>{item.name}</Typography>
-                    </BoxImgTitulo>
-                    <Typography variant='body2' padding={'0 .5rem'}>{item.description}</Typography>
-                </CardList>
-            ))}
-        </CardUl>
+        <Box>
+            {isMediumScreen || isSmallScreen ? (
+                <SliderCardUl {...settings}>
+                    {items.map((item) => (
+                        <CardList key={item.id}>
+                            <BoxImgTitulo>
+                                <img src={item.img} alt={item.name} width={50} height={50} />
+                                <Typography variant='body1'>{item.name}</Typography>
+                            </BoxImgTitulo>
+                            <Typography variant='body2' padding={'0 .5rem'}>{item.description}</Typography>
+                        </CardList>
+                    ))}
+                </SliderCardUl>
+            ) : (
+                <CardUl>
+                    {items.map((item) => (
+                        <CardList key={item.id}>
+                            <BoxImgTitulo>
+                                <img src={item.img} alt={item.name} width={50} height={50} />
+                                <Typography variant='body1'>{item.name}</Typography>
+                            </BoxImgTitulo>
+                            <Typography variant='body2' padding={'0 .5rem'}>{item.description}</Typography>
+                        </CardList>
+                    ))}
+                </CardUl>
+            )}
+        </Box>
     )
 }
 
