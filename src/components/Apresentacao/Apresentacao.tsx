@@ -21,6 +21,9 @@ const BoxApresentacao = styled(Box)(({ theme }) => ({
   [theme.breakpoints.down('sm')]: {
     flexDirection: 'column-reverse',
     height: '60vh',
+    justifyContent: 'space-around',
+    margin: '0 2rem',
+
   },
 }))
 
