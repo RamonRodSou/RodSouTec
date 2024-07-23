@@ -39,7 +39,7 @@ const Navegacao = () => {
   const theme = useTheme()
   const isMobile = useMediaQuery(theme.breakpoints.down('md'))
 
-  const toggleDrawer = (open: boolean) => (event: React.KeyboardEvent | React.MouseEvent) => {
+  const toggleDrawer = (open: boolean, callback?: () => void) => (event: React.KeyboardEvent | React.MouseEvent) => {
     if (
       event.type === 'keydown' &&
       ((event as React.KeyboardEvent).key === 'Tab' ||
@@ -48,20 +48,30 @@ const Navegacao = () => {
       return
     }
     setDrawerOpen(open)
+    if (callback) {
+      callback()
+    }
+  }
+
+  const handleScrollToContact = () => {
+    const contactElement = document.querySelector('.css-oauv0g')
+    if (contactElement) {
+      contactElement.scrollIntoView({ behavior: 'smooth' })
+    }
   }
 
   const menuItems = (
     <List>
-      <ListItemButton>
+      <ListItemButton onClick={toggleDrawer(false)}>
         <ListItemText primary="Home" />
       </ListItemButton>
-      <ListItemButton>
-        <ListItemText primary="Serviços" />
+      <ListItemButton onClick={toggleDrawer(false)}>
+        <ListItemText primary="Projetos" />
       </ListItemButton>
-      <ListItemButton>
+      <ListItemButton onClick={toggleDrawer(false)}>
         <ListItemText primary="Redes" />
       </ListItemButton>
-      <ListItemButton>
+      <ListItemButton onClick={toggleDrawer(false, handleScrollToContact)}>
         <ListItemText primary="Contato" />
       </ListItemButton>
     </List>
@@ -69,9 +79,8 @@ const Navegacao = () => {
 
   return (
     <Root>
-      <Barnav position="static" >
-        <Toolbar
-        >
+      <Barnav position="static">
+        <Toolbar>
           {isMobile ? (
             <>
               <IconButton
@@ -79,9 +88,9 @@ const Navegacao = () => {
                 color="inherit"
                 aria-label="menu"
                 onClick={toggleDrawer(true)}
-                sx={{'padding':'0'}}
+                sx={{ padding: '0' }}
               >
-              <MenuIcon sx={{'fontSize':'30px', }}/>
+                <MenuIcon sx={{ fontSize: '30px' }} />
               </IconButton>
               <Drawer
                 anchor="right"
@@ -107,7 +116,7 @@ const Navegacao = () => {
               <NavButton color="inherit">Home</NavButton>
               <NavButton color="inherit">Serviços</NavButton>
               <NavButton color="inherit">Redes</NavButton>
-              <NavButton color="inherit">Contato</NavButton>
+              <NavButton color="inherit" onClick={handleScrollToContact}>Contato</NavButton>
             </>
           )}
         </Toolbar>
