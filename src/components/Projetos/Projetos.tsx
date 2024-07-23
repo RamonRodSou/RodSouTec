@@ -9,7 +9,6 @@ const BoxContainer = styled(Box)(({ theme }) => ({
     alignItems: 'flex-start',
     justifyContent: 'center',
     padding: '2rem',
-    marginTop: '4rem',
     borderRadius: '5px',
     boxShadow: '0.25rem 0.37rem 1.25rem #00000036 ',
 
