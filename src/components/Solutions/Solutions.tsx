@@ -7,6 +7,7 @@ import Slider from "react-slick"
 
 import 'slick-carousel/slick/slick.css'
 import 'slick-carousel/slick/slick-theme.css'
+import Fade from 'react-reveal/Fade'
 
 type Props = {
     item?: () => Promise<ISolution[]>
@@ -17,7 +18,7 @@ const CardBox = styled(Box)({
     justifyContent: 'center',
     padding: '0',
     listStyleType: 'none',
-    paddingTop:'2rem'
+    paddingTop: '2rem'
 })
 
 const SliderCardSlader = styled(Slider)(({ theme }) => ({
@@ -26,7 +27,7 @@ const SliderCardSlader = styled(Slider)(({ theme }) => ({
     width: '100%',
     margin: '0 auto',
 
-    
+
     [theme.breakpoints.down('md')]: {
         padding: '.5rem 0',
         height: '90px',
@@ -82,7 +83,7 @@ const Solutions = ({ item }: Props) => {
     }, [item])
 
     const settings = {
-        dots: true,
+        dots: false,
         infinite: true,
         speed: 2000,
         slidesToShow: isSmallScreen ? 1 : isMediumScreen ? 2 : 1,
@@ -94,33 +95,36 @@ const Solutions = ({ item }: Props) => {
     }
 
     return (
-        <Box marginBottom={'2rem'}>
-            {isMediumScreen || isSmallScreen ? (
-                <SliderCardSlader {...settings}>
-                    {items.map((item) => (
-                        <Card key={item.id}>
-                            <BoxImgTitulo>
-                                <img src={item.img} alt={item.name} width={50} height={50} />
-                                <Typography variant='body1'>{item.name}</Typography>
-                            </BoxImgTitulo>
-                            <Typography variant='body2'  padding={'0 .8rem'}>{item.description}</Typography>
-                        </Card>
-                    ))}
-                </SliderCardSlader>
-            ) : (
-                <CardBox>
-                    {items.map((item) => (
-                        <Card key={item.id}>
-                            <BoxImgTitulo>
-                                <img src={item.img} alt={item.name} width={50} height={50}  />
-                                <Typography variant='body1'>{item.name}</Typography>
-                            </BoxImgTitulo>
-                            <Typography variant='body2'  padding={'0 .5rem'}>{item.description}</Typography>
-                        </Card>
-                    ))}
-                </CardBox>
-            )}
-        </Box>
+        <Fade bottom delay={1000}>
+            <Box marginBottom={'2rem'}>
+                {isMediumScreen || isSmallScreen ? (
+                    <SliderCardSlader {...settings}>
+                        {items.map((item) => (
+                            <Card key={item.id}>
+                                <BoxImgTitulo>
+                                    <img src={item.img} alt={item.name} width={50} height={50} />
+                                    <Typography variant='body1'>{item.name}</Typography>
+                                </BoxImgTitulo>
+                                <Typography variant='body2' padding={'0 .8rem'}>{item.description}</Typography>
+                            </Card>
+                        ))}
+                    </SliderCardSlader>
+                ) : (
+                    <CardBox>
+                        {items.map((item) => (
+                            <Card key={item.id}>
+                                <BoxImgTitulo>
+                                    <img src={item.img} alt={item.name} width={50} height={50} />
+                                    <Typography variant='body1'>{item.name}</Typography>
+                                </BoxImgTitulo>
+                                <Typography variant='body2' padding={'0 .5rem'}>{item.description}</Typography>
+                            </Card>
+                        ))}
+                    </CardBox>
+                )}
+            </Box>
+        </Fade>
+
     )
 }
 

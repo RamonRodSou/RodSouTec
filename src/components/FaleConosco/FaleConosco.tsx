@@ -2,6 +2,7 @@ import { Box, Button, styled, TextField } from '@mui/material'
 import { useState } from 'react'
 import contato from '../../assets/img/contato.png'
 import AoEnviarForm from '../../service/AoEnviarForm'
+import Fade from 'react-reveal/Fade'
 
 const ContainerFaleConosco = styled(Box)(({ theme }) => ({
     backgroundColor: 'var(--faleConoscoSecBg-color)',
@@ -107,55 +108,58 @@ const FaleConosco = () => {
     }
 
     return (
-        <ContainerFaleConosco>
-            <Titulo>Fale Conosco</Titulo>
-            <BoxFaleConosco >
-                <FormFaleC  onSubmit={handleSubmit}>
-                    <Box marginBottom="1rem">
-                        <TextField
-                            label="Seu nome"
-                            value={name}
-                            onChange={(e) => setName(e.target.value)}
-                            fullWidth
-                            required
-                        />
-                    </Box>
-                    <Box marginBottom="1rem">
-                        <TextField
-                            label="Seu e-mail"
-                            value={email}
-                            onChange={(e) => setEmail(e.target.value)}
-                            fullWidth
-                            required
-                        />
-                    </Box>
-                    <Box marginBottom="1rem">
-                        <TextField
-                            label="Seu telefone"
-                            value={celphone || ''}
-                            onChange={(e) => setCelphone(Number(e.target.value))}
-                            fullWidth
-                            required
-                        />
-                    </Box>
-                    <Box marginTop="1rem" >
-                        <TextField
-                            label="Serviço"
-                            required
-                            multiline
-                            rows={4}
-                            value={message}
-                            onChange={(e) => setMessage(e.target.value)}
-                            fullWidth
-                        />
-                    </Box>
-                    <Button type="submit" variant="contained" color="info" style={{ marginTop: '1rem' }}>
-                        Enviar
-                    </Button>
-                </FormFaleC>
-                <Img src={contato} alt='Imagem contato' />
-            </BoxFaleConosco>
-        </ContainerFaleConosco>
+        <Fade duration={2000}>
+            <ContainerFaleConosco>
+                <Titulo>Fale Conosco</Titulo>
+                <BoxFaleConosco >
+                    <FormFaleC onSubmit={handleSubmit}>
+                        <Box marginBottom="1rem">
+                            <TextField
+                                label="Seu nome"
+                                value={name}
+                                onChange={(e) => setName(e.target.value)}
+                                fullWidth
+                                required
+                            />
+                        </Box>
+                        <Box marginBottom="1rem">
+                            <TextField
+                                label="Seu e-mail"
+                                value={email}
+                                onChange={(e) => setEmail(e.target.value)}
+                                fullWidth
+                                required
+                            />
+                        </Box>
+                        <Box marginBottom="1rem">
+                            <TextField
+                                label="Seu telefone"
+                                value={celphone || ''}
+                                onChange={(e) => setCelphone(Number(e.target.value))}
+                                fullWidth
+                                required
+                            />
+                        </Box>
+                        <Box marginTop="1rem" >
+                            <TextField
+                                label="Serviço"
+                                required
+                                multiline
+                                rows={4}
+                                value={message}
+                                onChange={(e) => setMessage(e.target.value)}
+                                fullWidth
+                            />
+                        </Box>
+                        <Button type="submit" variant="contained" color="info" style={{ marginTop: '1rem' }}>
+                            Enviar
+                        </Button>
+                    </FormFaleC>
+                    <Img src={contato} alt='Imagem contato' />
+                </BoxFaleConosco>
+            </ContainerFaleConosco>
+        </Fade>
+
     )
 }
 

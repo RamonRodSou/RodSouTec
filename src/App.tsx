@@ -3,7 +3,7 @@ import '../src/_color.css'
 import { Box, Container, styled } from "@mui/material"
 import Header from "./components/Header/Header"
 import Apresentacao from "./components/Apresentacao/Apresentacao"
-import bg from './assets/bg.webp'
+import bg from './assets/bgm.webp'
 import Solutions from "./components/Solutions/Solutions"
 
 function App() {

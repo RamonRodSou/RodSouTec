@@ -2,6 +2,7 @@ import { Box, Button, Grid, styled, Typography } from '@mui/material'
 import { useEffect, useState } from 'react'
 import IProject from '../../interface/IProject'
 import { fetchListProject } from '../../service/fetchList'
+import Fade from 'react-reveal/Fade'
 
 const BoxContainer = styled(Box)(({ theme }) => ({
     display: 'flex',
@@ -30,7 +31,7 @@ const Titulo = styled('h2')(({ theme }) => ({
     textFillColor: 'transparent',
 
     [theme.breakpoints.down('sm')]: {
-        textAlign:'center',
+        textAlign: 'center',
         fontSize: '2rem',
     }
 }))
@@ -68,7 +69,7 @@ const Projeto = styled(Box)(({ theme }) => ({
     gap: '10rem',
     [theme.breakpoints.down('md')]: {
         flexDirection: 'column',
-        gap:'1rem'
+        gap: '1rem'
     },
 }))
 
@@ -76,8 +77,8 @@ const ImgBox = styled('img')(({ theme }) => ({
     borderRadius: '10px',
     transition: 'transform 0.3s ease-in-out',
     cursor: 'pointer',
-    width:'40%',
-    height:350,
+    width: '40%',
+    height: 350,
 
     '&:hover': {
         opacity: 0.9,
@@ -86,22 +87,22 @@ const ImgBox = styled('img')(({ theme }) => ({
     },
 
     [theme.breakpoints.down(900)]: {
-        width:'100%',
-        height:430,
+        width: '100%',
+        height: 430,
     },
 
     [theme.breakpoints.down('sm')]: {
-        height:230,
+        height: 230,
     },
 }))
 
 const GridProjectoBtn = styled(Grid)(({ theme }) => ({
 
-    display:'flex',
-    flexDirection:'column',
-    alignItems:'flex-start',
-    gap:'2rem',
-    
+    display: 'flex',
+    flexDirection: 'column',
+    alignItems: 'flex-start',
+    gap: '2rem',
+
 
     [theme.breakpoints.down('md')]: {
     },
@@ -146,7 +147,7 @@ const Projetos = () => {
 
     const [items, setItems] = useState<IProject[]>([])
 
-    function handleOpenPdf(pdf:string):void {
+    function handleOpenPdf(pdf: string): void {
         window.open(`/Pdf/${pdf}.pdf`, '_blank')
     }
 
@@ -166,20 +167,26 @@ const Projetos = () => {
             <BoxProject>
                 {
                     items.map((items, index) => (
-                        <Projeto key={index}>
-                            <ImgBox src={items.img} alt='Serviços' />
-                            <GridProjectoBtn>
-                                <span style={{'display':'flex', 'flexDirection':'column','gap':'1rem'}}>
-                                    <ProjectName variant='body1'>{items.name}</ProjectName>
-                                    <Typography variant='body1'>{items.description}</Typography>
-                                </span>
-                                <ButtonProjetos onClick={() => handleOpenPdf(items.arquivo)}>{'>'}</ButtonProjetos>
-                            </GridProjectoBtn>
-                        </Projeto>
+                        <Fade duration={2000}>
+                            <Projeto key={index}>
+                                <ImgBox src={items.img} alt='Serviços' />
+                                <GridProjectoBtn>
+                                    <span style={{ 'display': 'flex', 'flexDirection': 'column', 'gap': '1rem' }}>
+                                        <ProjectName variant='body1'>{items.name}</ProjectName>
+                                        <Typography variant='body1'>{items.description}</Typography>
+                                    </span>
+                                    <ButtonProjetos onClick={() => handleOpenPdf(items.arquivo)}>{'>'}</ButtonProjetos>
+                                </GridProjectoBtn>
+                            </Projeto>
+                        </Fade>
+
                     ))
                 }
             </BoxProject>
-            <MaisProjetosBtn>Mais Projetos</MaisProjetosBtn>
+            <Fade duration={2000}>
+                <MaisProjetosBtn>Mais Projetos</MaisProjetosBtn>
+            </Fade>
+
         </BoxContainer>
     )
 }

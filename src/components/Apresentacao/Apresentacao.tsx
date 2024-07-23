@@ -1,4 +1,5 @@
 import { Box, Link, Grid, styled, Typography } from '@mui/material'
+import Fade from 'react-reveal/Fade'
 
 const BoxApresentacao = styled(Box)(({ theme }) => ({
   display: 'flex',
@@ -37,19 +38,19 @@ const TituloImpactante = styled(Typography)(({ theme }) => ({
   WebkitTextFillColor: 'transparent',
   backgroundClip: 'text',
   textFillColor: 'transparent',
-  marginTop:'4rem',
+  marginTop: '4rem',
 
   [theme.breakpoints.down('md')]: {
     fontSize: '1.7rem',
     width: '100%',
-    margin:'0',
+    margin: '0',
   },
 
-  
+
   [theme.breakpoints.down('sm')]: {
     fontSize: '2rem',
     width: '100%',
-    margin:'0',
+    margin: '0',
   },
 }))
 
@@ -67,30 +68,38 @@ const FaleConosco = styled(Link)(({ theme }) => ({
 
   [theme.breakpoints.down('md')]: {
     padding: '.5rem 1rem',
-
   },
+
+  
+  [theme.breakpoints.down('sm')]: {
+    padding: '1rem 2rem',  },
 }))
 
 const Apresentacao = () => {
   return (
     <BoxApresentacao id='FaleConosco' >
       <Grid display={'flex'} flexDirection={'column'} alignItems={'flex-start'} justifyContent={'space-around'} gap={'1rem'} height={'80%'}>
-        <span>
+        <Fade left>
           <TituloImpactante variant='body1'>
             Transforme suas ideias em Realidade Digital !
           </TituloImpactante>
+        </Fade>
+        <Fade right duration={2000}>
           <Typography variant='body1' >
             Através de uma metodologia de trabalho ágil e focada em resultados.
           </Typography>
-        </span>
-        <FaleConosco href='https://api.whatsapp.com/send/?phone=5521972923210&text=Ol%C3%A1+RodSou+Tech.+%20Gostaria+de+informa%C3%A7%C3%B5es+sobre+cria%C3%A7%C3%A3o+de+sites+e+aplicativos.&type=phone_number&app_absent=0'>
-          Fale Conosco
-        </FaleConosco>
+        </Fade>
+        <Fade left>
+          <FaleConosco href='https://api.whatsapp.com/send/?phone=5521972923210&text=Ol%C3%A1+RodSou+Tech.+%20Gostaria+de+informa%C3%A7%C3%B5es+sobre+cria%C3%A7%C3%A3o+de+sites+e+aplicativos.&type=phone_number&app_absent=0'>
+            Fale Conosco
+          </FaleConosco>
+        </Fade>
+
       </Grid>
 
 
 
-    </BoxApresentacao>
+    </BoxApresentacao >
   )
 }
 
