@@ -94,7 +94,7 @@ const StyledAccordionDetails = styled(AccordionDetails)(({ theme }) => ({
     margin: '0 1rem',
 
     [theme.breakpoints.down('sm')]: {
-        margin: '-1rem 1rem .5rem ',
+        margin: '-.5rem 1rem .5rem ',
     }
 }))
 

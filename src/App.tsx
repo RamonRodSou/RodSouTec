@@ -3,8 +3,8 @@ import '../src/_color.css'
 import { Box, Container, styled } from "@mui/material"
 import Header from "./components/Header/Header"
 import Apresentacao from "./components/Apresentacao/Apresentacao"
-import Solutions from "./components/Solutions/Solutions"
 import bg from './assets/bg.webp'
+import Solutions from "./components/Solutions/Solutions"
 
 function App() {
 
@@ -30,10 +30,11 @@ function App() {
   const ContainerP = styled(Container)({
     display: 'flex',
     flexDirection: 'column',
-    justifyContent: 'space-around',
+    justifyContent: 'flex-start',
     height: '100%',
     position: 'relative',
     zIndex: 1,
+    padding: '1rem',
   })
 
   const Site = styled(Box)({
@@ -46,7 +47,8 @@ function App() {
         <ContainerP maxWidth="xl">
           <Header />
           <Apresentacao />
-          <Solutions />
+          <Solutions/>
+
         </ContainerP>
       </ContainerApresentacao>
       <Site>

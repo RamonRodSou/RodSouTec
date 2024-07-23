@@ -17,14 +17,23 @@ const CardBox = styled(Box)({
     justifyContent: 'center',
     padding: '0',
     listStyleType: 'none',
+    paddingTop:'2rem'
 })
 
-const SliderCardSlader = styled(Slider)({
-    padding: '.5rem',
+const SliderCardSlader = styled(Slider)(({ theme }) => ({
+    padding: '1rem .5rem',
     listStyleType: 'none',
     width: '100%',
     margin: '0 auto',
-})
+
+    
+    [theme.breakpoints.down('md')]: {
+        padding: '.5rem 0',
+        height: '90px',
+        borderRadius: '0',
+
+    },
+}))
 
 const Card = styled(Box)(({ theme }) => ({
     width: '100%',
@@ -85,7 +94,7 @@ const Solutions = ({ item }: Props) => {
     }
 
     return (
-        <Box>
+        <Box marginBottom={'2rem'}>
             {isMediumScreen || isSmallScreen ? (
                 <SliderCardSlader {...settings}>
                     {items.map((item) => (
