@@ -148,7 +148,7 @@ const Projetos = () => {
     const [items, setItems] = useState<IProject[]>([])
 
     function handleOpenPdf(pdf:string):void {
-        window.open(`../../Pdf/${pdf}.pdf`, '_blank')
+        window.open(`/Pdf/${pdf}.pdf`, '_blank')
     }
 
 
