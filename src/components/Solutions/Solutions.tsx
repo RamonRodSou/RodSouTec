@@ -4,10 +4,9 @@ import useMediaQuery from '@mui/material/useMediaQuery'
 import { fetchListSolution } from '../../service/fetchList'
 import ISolution from '../../interface/ISolution'
 import Slider from "react-slick"
-
 import 'slick-carousel/slick/slick.css'
 import 'slick-carousel/slick/slick-theme.css'
-import Fade from 'react-reveal/Fade'
+import { Fade } from "react-awesome-reveal"
 
 type Props = {
     item?: () => Promise<ISolution[]>
@@ -95,7 +94,7 @@ const Solutions = ({ item }: Props) => {
     }
 
     return (
-        <Fade bottom delay={1000}>
+        <Fade direction="up" delay={1000}>
             <Box marginBottom={'2rem'}>
                 {isMediumScreen || isSmallScreen ? (
                     <SliderCardSlader {...settings}>

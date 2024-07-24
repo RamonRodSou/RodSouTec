@@ -2,7 +2,7 @@ import { Box, Button, styled, TextField } from '@mui/material'
 import { useState } from 'react'
 import contato from '../../assets/img/contato.png'
 import AoEnviarForm from '../../service/AoEnviarForm'
-import Fade from 'react-reveal/Fade'
+import { Fade } from "react-awesome-reveal";
 
 const ContainerFaleConosco = styled(Box)(({ theme }) => ({
     backgroundColor: 'var(--faleConoscoSecBg-color)',
@@ -53,6 +53,8 @@ const BoxFaleConosco = styled(Box)(({ theme }) => ({
 
     [theme.breakpoints.down('sm')]: {
         flexDirection: 'column-reverse',
+        alignItems: 'center',
+
         width: '100%',
     }
 }))
@@ -63,7 +65,7 @@ const Img = styled('img')((({ theme }) => ({
     },
 
     [theme.breakpoints.down('sm')]: {
-        width: '100%',
+        width: '70%',
         height: '300px'
     }
 })))

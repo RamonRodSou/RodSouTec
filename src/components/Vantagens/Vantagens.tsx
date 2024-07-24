@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react'
 import { Grid, styled, Typography } from '@mui/material';
 import { fetchListVantagens } from '../../service/fetchList';
 import IVantagem from '../../interface/IVantagem';
-import Fade from 'react-reveal/Fade';
+import { Fade } from "react-awesome-reveal";
 
 type Props = {
     item?: () => Promise<IVantagem[]>

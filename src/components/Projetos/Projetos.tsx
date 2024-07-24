@@ -2,7 +2,7 @@ import { Box, Button, Grid, styled, Typography } from '@mui/material'
 import { useEffect, useState } from 'react'
 import IProject from '../../interface/IProject'
 import { fetchListProject } from '../../service/fetchList'
-import Fade from 'react-reveal/Fade'
+import { Fade } from "react-awesome-reveal";
 
 const BoxContainer = styled(Box)(({ theme }) => ({
     display: 'flex',

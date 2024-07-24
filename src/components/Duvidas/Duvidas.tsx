@@ -3,6 +3,7 @@ import { Accordion, AccordionDetails, AccordionSummary, Box, styled, Typography 
 import { fetchListDuvidas } from '../../service/fetchList';
 import IDuvidas from '../../interface/IDuvidas';
 import { KeyboardArrowDown, KeyboardArrowUp } from '@mui/icons-material';
+import { Fade } from 'react-awesome-reveal';
 
 type Props = {
     item?: () => Promise<IDuvidas[]>
@@ -39,7 +40,7 @@ const Titulo = styled('h2')(({ theme }) => ({
     textFillColor: 'transparent',
 
     [theme.breakpoints.down('sm')]: {
-        textAlign:'center',
+        textAlign: 'center',
         fontSize: '2rem',
     }
 }))
@@ -104,12 +105,12 @@ const Duvidas = ({ item }: Props) => {
     const [isArrow, setIsArrow] = useState<{ [key: number]: boolean }>({})
 
 
-    function handleArrow (id: number) {
+    function handleArrow(id: number) {
 
         setIsArrow((prev) => ({
             ...prev,
             [id]: !prev[id],
-          }))
+        }))
     }
 
     useEffect(() => {
@@ -125,20 +126,22 @@ const Duvidas = ({ item }: Props) => {
             <Box margin={'0 1rem'}>
                 {
                     items.map((item) => (
-                        <StyledAccordion key={item.id}  expanded={isArrow[item.id]} onClick={()=>handleArrow(item.id)}>
-                            <StyledAccordionSummary
-                                aria-controls="panel1-content"
-                                id="panel1-header"
-                            >
-                                <Box display={'flex'} alignItems={'center'} gap={'.5rem'}>
-                                    {isArrow[item.id] ? <KeyboardArrowUp /> : <KeyboardArrowDown />}
-                                    <DuvidasPadroes>{item.title}</DuvidasPadroes>
-                                </Box>
-                            </StyledAccordionSummary>
-                            <StyledAccordionDetails>
-                                <Descricao>{item.description}</Descricao>
-                            </StyledAccordionDetails>
-                        </StyledAccordion>
+                        <Fade cascade duration={1000}>
+                            <StyledAccordion key={item.id} expanded={isArrow[item.id]} onClick={() => handleArrow(item.id)}>
+                                <StyledAccordionSummary
+                                    aria-controls="panel1-content"
+                                    id="panel1-header"
+                                >
+                                    <Box display={'flex'} alignItems={'center'} gap={'.5rem'}>
+                                        {isArrow[item.id] ? <KeyboardArrowUp /> : <KeyboardArrowDown />}
+                                        <DuvidasPadroes>{item.title}</DuvidasPadroes>
+                                    </Box>
+                                </StyledAccordionSummary>
+                                <StyledAccordionDetails>
+                                    <Descricao>{item.description}</Descricao>
+                                </StyledAccordionDetails>
+                            </StyledAccordion>
+                        </Fade>
                     ))
                 }
             </Box>

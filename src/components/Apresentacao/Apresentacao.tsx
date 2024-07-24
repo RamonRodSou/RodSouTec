@@ -1,5 +1,5 @@
 import { Box, Link, Grid, styled, Typography } from '@mui/material'
-import Fade from 'react-reveal/Fade'
+import { Fade } from "react-awesome-reveal";
 
 const BoxApresentacao = styled(Box)(({ theme }) => ({
   display: 'flex',
@@ -79,17 +79,17 @@ const Apresentacao = () => {
   return (
     <BoxApresentacao id='FaleConosco' >
       <Grid display={'flex'} flexDirection={'column'} alignItems={'flex-start'} justifyContent={'space-around'} gap={'1rem'} height={'80%'}>
-        <Fade left>
+        <Fade direction="left">
           <TituloImpactante variant='body1'>
             Transforme suas ideias em Realidade Digital !
           </TituloImpactante>
         </Fade>
-        <Fade right duration={2000}>
+        <Fade  direction="right" duration={2000}>
           <Typography variant='body1' >
             Através de uma metodologia de trabalho ágil e focada em resultados.
           </Typography>
         </Fade>
-        <Fade left>
+        <Fade  direction="left">
           <FaleConosco href='https://api.whatsapp.com/send/?phone=5521972923210&text=Ol%C3%A1+RodSou+Tech.+%20Gostaria+de+informa%C3%A7%C3%B5es+sobre+cria%C3%A7%C3%A3o+de+sites+e+aplicativos.&type=phone_number&app_absent=0'>
             Fale Conosco
           </FaleConosco>
