@@ -84,7 +84,7 @@ const Apresentacao = () => {
             Transforme suas ideias em Realidade Digital !
           </TituloImpactante>
         </Fade>
-        <Fade  direction="up" duration={2000}>
+        <Fade duration={2000}>
           <Typography variant='body1' >
             Através de uma metodologia de trabalho ágil e focada em resultados.
           </Typography>
