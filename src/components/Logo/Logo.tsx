@@ -1,5 +1,6 @@
 import { Box, styled, Typography } from '@mui/material'
 import LogoImg from '../../assets/img/Logo.webp'
+import { useNavigate } from 'react-router-dom'
 
 type Props = {
   size?: number
@@ -30,9 +31,16 @@ const LogoImage = styled('img')(({ theme, size }:{ theme?: any; size: number }) 
 }))
 
 const Logo = (props: Props) => {
+
   const size = props.size || 60
+  const navegate = useNavigate()
+  
+  function handleHome (){
+    navegate("/")
+  }
+
   return (
-    <Box display="flex" flexDirection="row" alignItems="center" gap=".5rem">
+    <Box display="flex" flexDirection="row" alignItems="center" gap=".5rem" sx={{cursor:'pointer'}} onClick={handleHome}>
       <LogoImage src={LogoImg} alt="Logo do Site RodSouDev Tech" size={size} />
       <TituloLogo>RodSouTech</TituloLogo>
     </Box>

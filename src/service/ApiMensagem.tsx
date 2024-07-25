@@ -1,13 +1,16 @@
+
+import axios from 'axios'
+
 export async function PostMsg(url: string): Promise<any> {
   try {
-    const response = await fetch(url)
-    if (!response.ok) {
-      throw new Error("Não deu certo")
-    }
-    const data = await response.json()
-    return data
+    const response = await axios.get(url)
+    return response.data
   } catch (error) {
-    console.error('Failed to send message:', error)
+    if (axios.isAxiosError(error)) {
+      console.error('Não deu certo:', error)
+    } else {
+      console.error('Aconteceu algo inexperado', error)
+    }
     return null
   }
 }

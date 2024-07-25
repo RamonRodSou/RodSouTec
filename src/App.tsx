@@ -7,8 +7,16 @@ import bg from './assets/bgm.webp'
 import Solutions from "./components/Solutions/Solutions"
 import { BrowserRouter, Route, Routes } from "react-router-dom"
 import Projetos from "./components/Projetos/Projetos"
+import ArrowCircleUpIcon from '@mui/icons-material/ArrowCircleUp'
 
 function App() {
+
+  function handleUpPage() {
+    window.scrollTo({
+      top: 0,
+      behavior: 'smooth'
+      })
+  }
 
   const ContainerApresentacao = styled(Box)({
     position: 'relative',
@@ -43,13 +51,30 @@ function App() {
     background: 'linear-gradient(90deg, #000c29, #84019e)',
   })
 
+  const StyledFadeInBox = styled(Box) ({
+    cursor:'pointer',
+    opacity: 0,
+    animation: `fadeIn 3s ease-out forwards`,
+    animationDelay: '4s',
+    '@keyframes fadeIn': {
+      from: {
+        opacity: 0,
+        transform: 'translateY(20px)',
+      },
+      to: {
+        opacity: 1,
+        transform: 'translateY(0)',
+      },
+    },
+    zIndex: 99,
+    position: 'fixed',
+    bottom: '.5rem',
+    right: '.2rem',
+  })
+
   return (
-
-
-
     <BrowserRouter>
       <Site>
-
         <Routes>
           <Route path="/" element={
             <>
@@ -63,16 +88,22 @@ function App() {
               <Home />
             </>
           } />
-          
+
           <Route path="/projetos" element={
-            <Container  maxWidth="xl"  sx={{padding:'1rem'}}>
+            <Container maxWidth="xl" sx={{ padding: '1rem' }}>
               <Header />
               <Projetos />
             </Container>
           } />
 
         </Routes>
+
       </Site>
+
+      <StyledFadeInBox onClick={handleUpPage}>
+        <ArrowCircleUpIcon fontSize="large" />
+      </StyledFadeInBox>
+
     </BrowserRouter>
   )
 }
