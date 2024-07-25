@@ -11,6 +11,7 @@ import { styled, useTheme } from '@mui/material/styles'
 import useMediaQuery from '@mui/material/useMediaQuery'
 import CloseIcon from '@mui/icons-material/Close'
 import { ListItemButton } from '@mui/material'
+import { useNavigate } from 'react-router-dom'
 
 const Root = styled('div')({})
 
@@ -38,6 +39,7 @@ const Navegacao = () => {
   const [drawerOpen, setDrawerOpen] = useState(false)
   const theme = useTheme()
   const isMobile = useMediaQuery(theme.breakpoints.down('md'))
+  const navegate = useNavigate()
 
   const toggleDrawer = (open: boolean, callback?: () => void) => (event: React.KeyboardEvent | React.MouseEvent) => {
     if (
@@ -52,25 +54,31 @@ const Navegacao = () => {
       callback()
     }
   }
+  function handleHome() {
+    navegate('/')
+  }
 
-  const handleScrollToContact = () => {
-    const contactElement = document.querySelector('.css-oauv0g')
-    if (contactElement) {
-      contactElement.scrollIntoView({ behavior: 'smooth' })
-    }
+  function handleProjetos() {
+    navegate('/projetos')
+  }
+
+
+  function handleScrollToContact() {
+
+    window.open('https://api.whatsapp.com/send/?phone=5521972923210&text=Ol%C3%A1+RodSou+Tech.+%20Gostaria+de+informa%C3%A7%C3%B5es+sobre+cria%C3%A7%C3%A3o+de+sites+e+aplicativos.&type=phone_number&app_absent=0')
   }
 
   const menuItems = (
     <List>
-      <ListItemButton onClick={toggleDrawer(false)}>
+      <ListItemButton onClick={toggleDrawer(false, handleHome)}>
         <ListItemText primary="Home" />
       </ListItemButton>
-      <ListItemButton onClick={toggleDrawer(false)}>
+      <ListItemButton onClick={toggleDrawer(false, handleProjetos)}>
         <ListItemText primary="Projetos" />
       </ListItemButton>
-      <ListItemButton onClick={toggleDrawer(false)}>
+      {/* <ListItemButton onClick={toggleDrawer(false)}>
         <ListItemText primary="Redes" />
-      </ListItemButton>
+      </ListItemButton> */}
       <ListItemButton onClick={toggleDrawer(false, handleScrollToContact)}>
         <ListItemText primary="Contato" />
       </ListItemButton>
@@ -113,10 +121,10 @@ const Navegacao = () => {
             </>
           ) : (
             <>
-              <NavButton color="inherit">Home</NavButton>
-              <NavButton color="inherit">Serviços</NavButton>
-              <NavButton color="inherit">Redes</NavButton>
-              <NavButton color="inherit" onClick={handleScrollToContact}>Contato</NavButton>
+              <NavButton color="inherit" onClick={handleHome}>Home</NavButton>
+              <NavButton color="inherit" onClick={handleProjetos}>Projetos</NavButton>
+              {/* <NavButton color="inherit">Redes</NavButton> */}
+              <NavButton color="inherit" onClick={toggleDrawer(false, handleScrollToContact)}>Contato</NavButton>
             </>
           )}
         </Toolbar>

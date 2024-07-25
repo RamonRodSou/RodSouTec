@@ -1,8 +1,11 @@
 import { Box, Button, styled, TextField } from '@mui/material'
-import { useState } from 'react'
+import { useContext, useState } from 'react'
 import contato from '../../assets/img/contato.png'
 import AoEnviarForm from '../../service/AoEnviarForm'
-import { Fade } from "react-awesome-reveal";
+import { Fade } from "react-awesome-reveal"
+import ValidationContext from '../ValidationContext/ValidationContext'
+
+
 
 const ContainerFaleConosco = styled(Box)(({ theme }) => ({
     backgroundColor: 'var(--faleConoscoSecBg-color)',
@@ -91,8 +94,38 @@ const FaleConosco = () => {
     const [celphone, setCelphone] = useState<number | undefined>()
     const [message, setMessage] = useState<string>('')
 
+
+    const { nome, emailV, telefone, servico } = useContext(ValidationContext)
+
+
     async function handleSubmit(event: React.FormEvent) {
         event.preventDefault()
+
+        const nomeValido = nome(name)
+        const emailValido = emailV(email)
+        const telefoneValido = telefone(celphone || 0)
+        const servicoValido = servico(message)
+    
+        let mensagemErro = '';
+        if (!nomeValido.valido) {
+            mensagemErro += `Nome: ${nomeValido.texto}\n`;
+        }
+        if (!emailValido.valido) {
+            mensagemErro += `E-mail: ${emailValido.texto}\n`;
+        }
+        if (!telefoneValido.valido) {
+            mensagemErro += `Telefone: ${telefoneValido.texto}\n`;
+        }
+        if (!servicoValido.valido) {
+            mensagemErro += `Serviço: ${servicoValido.texto}\n`;
+        }
+
+        // Exibir a mensagem de erro, se houver
+        if (mensagemErro) {
+            alert(`Corrija os seguintes erros:\n${mensagemErro}`);
+            return;
+        }
+        
         const dados = {
             nome: name,
             email: email,
@@ -111,7 +144,7 @@ const FaleConosco = () => {
 
     return (
         <Fade duration={2000}>
-            <ContainerFaleConosco>
+            <ContainerFaleConosco id='contato'>
                 <Titulo>Fale Conosco</Titulo>
                 <BoxFaleConosco >
                     <FormFaleC onSubmit={handleSubmit}>

@@ -5,6 +5,8 @@ import Header from "./components/Header/Header"
 import Apresentacao from "./components/Apresentacao/Apresentacao"
 import bg from './assets/bgm.webp'
 import Solutions from "./components/Solutions/Solutions"
+import { BrowserRouter, Route, Routes } from "react-router-dom"
+import Projetos from "./components/Projetos/Projetos"
 
 function App() {
 
@@ -42,19 +44,36 @@ function App() {
   })
 
   return (
-    <>
-      <ContainerApresentacao>
-        <ContainerP maxWidth="xl">
-          <Header />
-          <Apresentacao />
-          <Solutions/>
 
-        </ContainerP>
-      </ContainerApresentacao>
+
+
+    <BrowserRouter>
       <Site>
-        <Home />
+
+        <Routes>
+          <Route path="/" element={
+            <>
+              <ContainerApresentacao>
+                <ContainerP maxWidth="xl">
+                  <Header />
+                  <Apresentacao />
+                  <Solutions />
+                </ContainerP>
+              </ContainerApresentacao>
+              <Home />
+            </>
+          } />
+          
+          <Route path="/projetos" element={
+            <Container  maxWidth="xl"  sx={{padding:'1rem'}}>
+              <Header />
+              <Projetos />
+            </Container>
+          } />
+
+        </Routes>
       </Site>
-    </>
+    </BrowserRouter>
   )
 }
 

@@ -3,6 +3,8 @@ import { useEffect, useState } from 'react'
 import IProject from '../../interface/IProject'
 import { fetchListProject } from '../../service/fetchList'
 import { Fade } from "react-awesome-reveal";
+import { useLocation, useNavigate } from 'react-router-dom';
+
 
 const BoxContainer = styled(Box)(({ theme }) => ({
     display: 'flex',
@@ -103,7 +105,6 @@ const GridProjectoBtn = styled(Grid)(({ theme }) => ({
     alignItems: 'flex-start',
     gap: '2rem',
 
-
     [theme.breakpoints.down('md')]: {
     },
 }))
@@ -131,10 +132,10 @@ const MaisProjetosBtn = styled(Button)({
     padding: '0 1rem',
     margin: '3rem 1rem 0',
     fontSize: '1rem',
-    color: 'var(--maisProjetos-color)',
     fontFamily: 'monospace',
     transition: 'transform 0.3s ease-in-out',
     cursor: 'pointer',
+    color: 'var(--maisProjetos-color)',
 
     '&:hover': {
         opacity: 0.9,
@@ -147,15 +148,26 @@ const Projetos = () => {
 
     const [items, setItems] = useState<IProject[]>([])
 
+    const location = useLocation()
+    const isOnProjectsPage = location.pathname === '/projetos'
+    let navegate = useNavigate()
+
+    let quantidadeItens: number = 4
+
     function handleOpenPdf(pdf: string): void {
         window.open(`/Pdf/${pdf}.pdf`, '_blank')
     }
 
+    function handleProjetos() {
+
+        navegate('/projetos')
+    }
 
     useEffect(() => {
         (async () => {
             const response = await fetchListProject()
             setItems(response)
+
         })()
 
     }, [items])
@@ -166,7 +178,7 @@ const Projetos = () => {
             <Titulo>Projetos</Titulo>
             <BoxProject>
                 {
-                    items.map((items, index) => (
+                    items.slice(0, isOnProjectsPage ? items.length : quantidadeItens).map((items, index) => (
                         <Fade duration={2000}>
                             <Projeto key={index}>
                                 <ImgBox src={items.img} alt='Serviços' />
@@ -182,10 +194,13 @@ const Projetos = () => {
 
                     ))
                 }
+
             </BoxProject>
-            <Fade duration={2000}>
-                <MaisProjetosBtn>Mais Projetos</MaisProjetosBtn>
-            </Fade>
+            {!isOnProjectsPage && (
+                <Fade duration={2000}>
+                    <MaisProjetosBtn onClick={handleProjetos}> Mais Projetos</MaisProjetosBtn>
+                </Fade>
+            )}
 
         </BoxContainer>
     )

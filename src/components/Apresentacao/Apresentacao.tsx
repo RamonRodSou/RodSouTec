@@ -59,6 +59,9 @@ const FaleConosco = styled(Link)(({ theme }) => ({
   color: '#fff',
   padding: '1rem 2rem',
   borderRadius: '0.5rem',
+  cursor:'pointer',
+  textDecoration:'none',
+
   '&:hover': {
     backgroundColor: 'var(--faleConoscoBgHover-color)',
   },
@@ -69,13 +72,20 @@ const FaleConosco = styled(Link)(({ theme }) => ({
   [theme.breakpoints.down('md')]: {
     padding: '.5rem 1rem',
   },
-
   
   [theme.breakpoints.down('sm')]: {
     padding: '1rem 2rem',  },
 }))
 
 const Apresentacao = () => {
+
+  function handleScrollToContact() {
+    const contactElement = document.querySelector('.css-oauv0g')
+    if (contactElement) {
+      contactElement.scrollIntoView({ behavior: 'smooth' })
+    }
+  }
+
   return (
     <BoxApresentacao id='FaleConosco' >
       <Grid display={'flex'} flexDirection={'column'} alignItems={'flex-start'} justifyContent={'space-around'} gap={'1rem'} height={'80%'}>
@@ -90,7 +100,7 @@ const Apresentacao = () => {
           </Typography>
         </Fade>
         <Fade  direction="down">
-          <FaleConosco href='https://api.whatsapp.com/send/?phone=5521972923210&text=Ol%C3%A1+RodSou+Tech.+%20Gostaria+de+informa%C3%A7%C3%B5es+sobre+cria%C3%A7%C3%A3o+de+sites+e+aplicativos.&type=phone_number&app_absent=0'>
+          <FaleConosco onClick={handleScrollToContact}>
             Fale Conosco
           </FaleConosco>
         </Fade>
