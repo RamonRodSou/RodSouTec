@@ -120,7 +120,6 @@ const FaleConosco = () => {
             mensagemErro += `Serviço: ${servicoValido.texto}\n`;
         }
 
-        // Exibir a mensagem de erro, se houver
         if (mensagemErro) {
             alert(`Corrija os seguintes erros:\n${mensagemErro}`);
             return;
@@ -133,6 +132,8 @@ const FaleConosco = () => {
             servico: message,
             data: new Date().toISOString()
         }
+        console.log(dados)
+
         const enviar = AoEnviarForm(dados)
         await enviar
         alert('Mensagem enviada com sucesso!')
@@ -140,6 +141,7 @@ const FaleConosco = () => {
         setEmail('')
         setCelphone(undefined)
         setMessage('')
+
     }
 
     return (
