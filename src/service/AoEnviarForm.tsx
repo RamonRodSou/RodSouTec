@@ -1,5 +1,5 @@
 import axios from "axios"
-import { PostMsg } from "./ApiMensagem"
+// import { PostMsg } from "./ApiMensagem"
 
 interface FormData {
   nome?: string
