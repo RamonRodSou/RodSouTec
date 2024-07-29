@@ -179,7 +179,7 @@ const Projetos = () => {
             <BoxProject>
                 {
                     items.slice(0, isOnProjectsPage ? items.length : quantidadeItens).map((items, index) => (
-                        <Fade duration={2000}>
+                        <Fade key={index} duration={2000}>
                             <Projeto key={index}>
                                 <ImgBox src={items.img} alt='Serviços' />
                                 <GridProjectoBtn>

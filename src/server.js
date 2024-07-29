@@ -43,7 +43,7 @@ async function createServer() {
   app.use('*', async (req, res) => {
     try {
       const url = req.originalUrl
-      let template = fs.readFileSync(path.resolve(__dirname, 'index.html'), 'utf-8')
+      let template = fs.readFileSync(path.resolve(__dirname, '../index.html'), 'utf-8')
       template = await vite.transformIndexHtml(url, template)
       const html = template
       res.status(200).set({ 'Content-Type': 'text/html' }).end(html)
@@ -54,8 +54,8 @@ async function createServer() {
     }
   })
 
-  app.listen(5173, () => {
-    console.log('Servidor rodando em http://localhost:5173')
+  app.listen(3001, () => {
+    console.log('Servidor rodando em http://localhost:3001')
   })
 }
 

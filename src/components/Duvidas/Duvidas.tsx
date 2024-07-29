@@ -126,7 +126,7 @@ const Duvidas = ({ item }: Props) => {
             <Box margin={'0 1rem'}>
                 {
                     items.map((item) => (
-                        <Fade cascade duration={1000}>
+                        <Fade key={item.id} cascade duration={1000}>
                             <StyledAccordion key={item.id} expanded={isArrow[item.id]} onClick={() => handleArrow(item.id)}>
                                 <StyledAccordionSummary
                                     aria-controls="panel1-content"
