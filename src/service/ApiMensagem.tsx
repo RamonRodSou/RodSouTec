@@ -1,4 +1,3 @@
-
 import axios from 'axios'
 
 export async function PostMsg(url: string): Promise<any> {
