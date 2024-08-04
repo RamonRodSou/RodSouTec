@@ -10,7 +10,7 @@ import ValidationContext, { validaNome, validaEmail, validaTelefone, validaServi
 const Home = () => {
 
     return (
-        <Container maxWidth="xl" sx={{ padding: '3rem 0' }}>
+        <Container maxWidth="xl" sx={{ padding: '3rem 0 0' }}>
             <Projetos />
             <Vantagens />
             <Duvidas />

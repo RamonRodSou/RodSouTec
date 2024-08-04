@@ -3,7 +3,7 @@ import Logo from '../Logo/Logo'
 
 const Rodape = styled('footer')(({ theme }) => ({
     textAlign: 'center',
-    padding: '2rem',
+    padding: '2rem 2rem 0',
     margin: '5rem 3rem 0',
     display: 'flex',
     flexDirection: 'column',
