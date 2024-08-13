@@ -27,7 +27,7 @@ async function createServer() {
     const mensagem = `Cliente: ${nome},\n\n Email: ${email},\n\n Telefone: ${telefone},\n\n Serviço: ${servico}\n\n ${dataFormatada}`
     const mensagemFormatada = encodeURIComponent(mensagem)
 
-    let token = '6404469401:AAFiWfbdcQ3aypuognmviTMQ58CXsUccatU'
+    let token = '00000000:AAFiWfbdcQ3aypuognmviTMQ58CXsUccatU'
     let chatId = '928984269' // id da pessoa
 
     const urlApiTelegram = `https://api.telegram.org/bot${token}/sendMessage?chat_id=${chatId}&text=${mensagemFormatada}`

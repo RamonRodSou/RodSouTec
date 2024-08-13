@@ -5,6 +5,7 @@ import agendou from '../../assets/img/project/agendou.webp'
 import KidFlix from '../../assets/img/project/KidFlix.webp'
 import ECommerce from '../../assets/img/project/E-commerce.webp'
 import GerenteApp from '../../assets/img/project/GerenteApp.webp'
+import OnlyCifra from '../../assets/img/project/OnlyCifra.webp'
 
 import IProject from '../../interface/IProject'
 
@@ -70,6 +71,15 @@ const listProject: IProject[] = [
         img: GerenteApp,
         url: 'rodsoudev.com',
         arquivo: 'GerenteApp'
+
+    },
+    {
+        id: 9,
+        name: "OnlyCifra",
+        description: "OnlyCifra é um app web, que simplifica a gestão de cifras para músicos, focado na visualização de notas e otimizado para dispositivos móveis.",
+        img: OnlyCifra,
+        url: 'rodsoudev.com',
+        arquivo: 'OnlyCifra'
 
     },
 ]
