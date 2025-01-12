@@ -16,7 +16,6 @@ const CardUl = styled('ul')({
     margin: '4rem 0',
 })
 
-
 const Titulo = styled(Typography)(({ theme }) => ({
 
     variant: 'body1',

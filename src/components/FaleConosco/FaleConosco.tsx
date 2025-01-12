@@ -5,8 +5,6 @@ import AoEnviarForm from '../../service/AoEnviarForm'
 import { Fade } from "react-awesome-reveal"
 import ValidationContext from '../ValidationContext/ValidationContext'
 
-
-
 const ContainerFaleConosco = styled(Box)(({ theme }) => ({
     backgroundColor: 'var(--faleConoscoSecBg-color)',
     padding: '4rem',
@@ -93,10 +91,7 @@ const FaleConosco = () => {
     const [email, setEmail] = useState<string>('')
     const [celphone, setCelphone] = useState<number | undefined>()
     const [message, setMessage] = useState<string>('')
-
-
     const { nome, emailV, telefone, servico } = useContext(ValidationContext)
-
 
     async function handleSubmit(event: React.FormEvent) {
         event.preventDefault()
@@ -132,7 +127,6 @@ const FaleConosco = () => {
             servico: message,
             data: new Date().toISOString()
         }
-        console.log(dados)
 
         const enviar = AoEnviarForm(dados)
         await enviar
@@ -141,7 +135,6 @@ const FaleConosco = () => {
         setEmail('')
         setCelphone(undefined)
         setMessage('')
-
     }
 
     return (
@@ -195,8 +188,7 @@ const FaleConosco = () => {
                     <Img src={contato} alt='Imagem contato' />
                 </BoxFaleConosco>
             </ContainerFaleConosco>
-        </Fade>
-
+        </Fade>    
     )
 }
 

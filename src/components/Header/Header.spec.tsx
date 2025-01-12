@@ -8,5 +8,4 @@ describe("Testando Componente Header", () => {
         const box = await screen.findByRole("banner")
         expect(box).toHaveStyle('display: flex')
     })
-
 })

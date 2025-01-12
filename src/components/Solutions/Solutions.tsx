@@ -26,12 +26,10 @@ const SliderCardSlader = styled(Slider)(({ theme }) => ({
     width: '100%',
     margin: '0 auto',
 
-
     [theme.breakpoints.down('md')]: {
         padding: '.5rem 0',
         height: '90px',
         borderRadius: '0',
-
     },
 }))
 
@@ -50,11 +48,11 @@ const Card = styled(Box)(({ theme }) => ({
         backgroundColor: 'var(--cardBoxBgHover-color)',
         transform: 'scale(.9)',
     },
+    
     [theme.breakpoints.down('md')]: {
         padding: '.5rem 0',
         height: '120px',
         borderRadius: '0',
-
     },
 }))
 
@@ -63,6 +61,7 @@ const BoxImgTitulo = styled(Box)(({ theme }) => ({
     display: 'flex',
     gap: '1rem',
     alignItems: 'center',
+
     [theme.breakpoints.down('md')]: {
         padding: '.5rem 1rem'
     },
@@ -101,10 +100,10 @@ const Solutions = ({ item }: Props) => {
                         {items.map((item) => (
                             <Card key={item.id}>
                                 <BoxImgTitulo>
-                                    <img src={item.img} alt={item.name} width={50} height={50} />
-                                    <Typography variant='body1'>{item.name}</Typography>
+                                    <img src={item.img} alt={item.name} width={30} height={30} />
+                                    <Typography variant='body2'>{item.name}</Typography>
                                 </BoxImgTitulo>
-                                <Typography variant='body2' padding={'0 .8rem'}>{item.description}</Typography>
+                                <Typography variant='subtitle2'  fontSize={'.8rem'} padding={'0 .8rem'}>{item.description}</Typography>
                             </Card>
                         ))}
                     </SliderCardSlader>
@@ -113,17 +112,16 @@ const Solutions = ({ item }: Props) => {
                         {items.map((item) => (
                             <Card key={item.id}>
                                 <BoxImgTitulo>
-                                    <img src={item.img} alt={item.name} width={50} height={50} />
-                                    <Typography variant='body1'>{item.name}</Typography>
+                                    <img src={item.img} alt={item.name} width={30} height={30} />
+                                    <Typography variant='body2'>{item.name}</Typography>
                                 </BoxImgTitulo>
-                                <Typography variant='body2' padding={'0 .5rem'}>{item.description}</Typography>
+                                <Typography variant='subtitle2' fontSize={'.8rem'} padding={'0 .5rem'}>{item.description}</Typography>
                             </Card>
                         ))}
                     </CardBox>
                 )}
             </Box>
         </Fade>
-
     )
 }
 

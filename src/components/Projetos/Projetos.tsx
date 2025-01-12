@@ -5,7 +5,6 @@ import { fetchListProject } from '../../service/fetchList'
 import { Fade } from "react-awesome-reveal";
 import { useLocation, useNavigate } from 'react-router-dom';
 
-
 const BoxContainer = styled(Box)(({ theme }) => ({
     display: 'flex',
     flexDirection: 'column',
@@ -59,7 +58,6 @@ const BoxProject = styled(Box)(({ theme }) => ({
     padding: '1rem',
     [theme.breakpoints.down('md')]: {
         gap: '5rem',
-
     },
 }))
 
@@ -124,7 +122,6 @@ const ButtonProjetos = styled(Button)({
         opacity: 0.9,
         transform: 'scale(.9)'
     },
-
 })
 
 const MaisProjetosBtn = styled(Button)({
@@ -164,16 +161,13 @@ const Projetos = () => {
     }
 
     useEffect(() => {
-        (async () => {
+        ( async () => {
             const response = await fetchListProject()
             setItems(response)
-
         })()
-
     }, [items])
 
     return (
-
         <BoxContainer >
             <Titulo>Projetos</Titulo>
             <BoxProject>
@@ -194,14 +188,12 @@ const Projetos = () => {
 
                     ))
                 }
-
             </BoxProject>
             {!isOnProjectsPage && (
                 <Fade duration={2000}>
                     <MaisProjetosBtn onClick={handleProjetos}> Mais Projetos</MaisProjetosBtn>
                 </Fade>
             )}
-
         </BoxContainer>
     )
 }

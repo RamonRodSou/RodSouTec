@@ -12,7 +12,6 @@ const mockFetchList = vi.fn(fetchListVantagens).mockImplementation(
 
 describe("Testando Componente Vantagens", () => {
 
-
     it("Deve haver 6 elementos", async () => {
         render(<Vantagens item={mockFetchList} />)
 
@@ -33,6 +32,4 @@ describe("Testando Componente Vantagens", () => {
         const description = await screen.findByText('Garanta profissionalismo em suas comunicações com um e-mail personalizado da sua marca, seja para seu site ou aplicativo. Exemplo: contato@suamarca.com.br')
         expect(description).toBeInTheDocument()
     })
-
-
 })

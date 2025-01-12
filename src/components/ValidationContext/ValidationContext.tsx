@@ -1,6 +1,5 @@
 import React from 'react'
 
-// Funções de validação
 export function validaNome(nome: string) {
     if (nome.length < 4) {
         return { valido: false, texto: "O Nome deve ter pelo menos 4 caracteres" }

@@ -12,7 +12,6 @@ const mockFetchList = vi.fn(fetchListDuvidas).mockImplementation(
 
 describe("Testando Componente Duvidas", () => {
 
-
     it("Deve haver 12 elementos", async () => {
         render(<Duvidas item={mockFetchList} />)
 
@@ -33,6 +32,5 @@ describe("Testando Componente Duvidas", () => {
         const description = await screen.findByText('Sim, oferecemos e-mail profissional com até 50 GB de armazenamento, mas é opcional.')
         expect(description).toBeInTheDocument()
     })
-
 
 })

@@ -43,11 +43,11 @@ const Navegacao = () => {
 
   const toggleDrawer = (open: boolean, callback?: () => void) => (event: React.KeyboardEvent | React.MouseEvent) => {
     if (
-      event.type === 'keydown' &&
-      ((event as React.KeyboardEvent).key === 'Tab' ||
-        (event as React.KeyboardEvent).key === 'Shift')
-    ) {
-      return
+        event.type === 'keydown' &&
+        ((event as React.KeyboardEvent).key === 'Tab' ||
+          (event as React.KeyboardEvent).key === 'Shift')
+      ) {
+        return
     }
     setDrawerOpen(open)
     if (callback) {

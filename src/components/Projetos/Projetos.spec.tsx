@@ -2,7 +2,6 @@
 import { render, screen } from '@testing-library/react'
 import Projetos from './Projetos'
 
-
 describe("Testando Componente Projetos", () => {
 
     it("Deve haver 4 imagens", async () => {
@@ -25,7 +24,4 @@ describe("Testando Componente Projetos", () => {
         const description = await screen.findByText(/Oxicom Energia Solar/i)
         expect(description).toBeInTheDocument()
     })
-
-
-
 })

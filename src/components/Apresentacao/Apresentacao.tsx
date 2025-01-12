@@ -3,9 +3,9 @@ import { Fade } from "react-awesome-reveal";
 
 const BoxApresentacao = styled(Box)(({ theme }) => ({
   display: 'flex',
-  margin: '3rem 2rem',
+  margin: '2rem 1rem',
   gap: '5rem',
-  height: '60vh',
+  height: '50vh',
   justifyContent: 'space-between',
   alignItems: 'space-between',
 
@@ -29,16 +29,20 @@ const BoxApresentacao = styled(Box)(({ theme }) => ({
 }))
 
 const TituloImpactante = styled(Typography)(({ theme }) => ({
-  fontSize: '3.5rem',
+  fontSize: '3rem',
   fontWeight: 'bold',
   fontFamily: 'Orbitron',
-  width: '50%',
+  width: '80%',
   background: 'linear-gradient(to right,#fff ,#ffd4c9)',
   WebkitBackgroundClip: 'text',
   WebkitTextFillColor: 'transparent',
   backgroundClip: 'text',
   textFillColor: 'transparent',
   marginTop: '4rem',
+
+  '@media (max-width: 900px) and (max-height: 8000px)': {
+    width: '100%',
+  },
 
   [theme.breakpoints.down('md')]: {
     fontSize: '1.7rem',

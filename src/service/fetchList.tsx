@@ -7,7 +7,6 @@ import IProject from "../interface/IProject"
 import ISolution from "../interface/ISolution"
 import IVantagem from "../interface/IVantagem"
 
-
 export async function fetchListSolution(): Promise<ISolution[]> {
     return new Promise((resolve) => {
         setTimeout(() => {
@@ -30,7 +29,6 @@ export async function fetchListDuvidas(): Promise<IDuvidas[]> {
             resolve(ListDuvidas)
         }, 500)
     })
-
 }
 
 export async function fetchListProject(): Promise<IProject[]> {

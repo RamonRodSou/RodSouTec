@@ -16,7 +16,4 @@ describe("Testando componente Footer", ()=> {
         const texto = await screen.findByText(/Copyright Ramon Rodrigues - Since 2023/i)
         expect(texto).toBeInTheDocument()
     })
-
-
-    
 })

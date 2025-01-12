@@ -12,7 +12,6 @@ const mockFetchList = vi.fn(fetchListSolution).mockImplementation(
 
 describe("Testando Componente Solutions", () => {
 
-
     it("Deve haver 5 img", async () => {
         render(<Solutions item={mockFetchList} />)
 
@@ -33,7 +32,4 @@ describe("Testando Componente Solutions", () => {
         const description = await screen.findByText('Aplicativos para celular, web ou desktop.')
         expect(description).toBeInTheDocument()
     })
-
-
-
 })

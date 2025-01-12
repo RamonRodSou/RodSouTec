@@ -18,8 +18,6 @@ const Rodape = styled('footer')(({ theme }) => ({
     }
 }))
 
-
-
 const Footer = () => {
     return (
         <Rodape>

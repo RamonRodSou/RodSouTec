@@ -4,7 +4,6 @@ type Props = {
     rotate: number
     color: string
 }
-
 const Circulo = styled('span')<Props>(({ rotate, color}) => ({
     border:`1px solid  ${color}`,
     height: '230px',

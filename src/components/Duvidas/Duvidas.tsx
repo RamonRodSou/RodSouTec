@@ -22,11 +22,8 @@ const ContainerDuvidas = styled(Box)(({ theme }) => ({
     [theme.breakpoints.down('sm')]: {
         justifyContent: 'center',
         padding: '2rem 0',
-
     },
 }))
-
-
 
 const Titulo = styled('h2')(({ theme }) => ({
     marginTop: 0,
@@ -79,7 +76,6 @@ const DuvidasPadroes = styled(Typography)(({ theme }) => ({
     },
 }))
 
-
 const Descricao = styled(Typography)(({ theme }) => ({
     variant: 'body2',
     margin: '0 1rem',
@@ -98,7 +94,6 @@ const StyledAccordionDetails = styled(AccordionDetails)(({ theme }) => ({
         margin: '-.5rem 1rem .5rem ',
     }
 }))
-
 
 const Duvidas = ({ item }: Props) => {
     const [items, setItems] = useState<IDuvidas[]>([])

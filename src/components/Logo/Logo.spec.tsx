@@ -10,7 +10,6 @@ describe("Testando componente Logo", () => {
         expect(logoImg).toHaveLength(1)
     })
 
-
     it("Deve haver um título", async () => {
         render(<Logo/>)
 

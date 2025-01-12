@@ -7,8 +7,7 @@ const BoxHeader = styled(Box)(({ theme }) => ({
   alignItems:'center',
   justifyContent:'space-between',
   margin:'0 0 2rem 0',
-  
- 
+
   [theme.breakpoints.down('md')]: {
     margin:'0 0 .7rem 0',
 

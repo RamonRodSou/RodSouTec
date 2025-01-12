@@ -6,7 +6,6 @@ import FaleConosco from '../components/FaleConosco/FaleConosco'
 import Footer from '../components/Footer/Footer'
 import ValidationContext, { validaNome, validaEmail, validaTelefone, validaServico } from '../components/ValidationContext/ValidationContext'
 
-
 const Home = () => {
 
     return (
@@ -23,8 +22,6 @@ const Home = () => {
                 <FaleConosco />
             </ValidationContext.Provider>
             <Footer />
-
-
         </Container>
     )
 }

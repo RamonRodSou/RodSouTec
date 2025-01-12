@@ -19,7 +19,7 @@ const ListDuvidas: IDuvidas[] = [
     },
     {
         id: 4,
-        title: "O domínio registrado é meu ou da RodSouTech?",
+        title: "O domínio registrado é meu ou da TechnoSou?",
         description: "O domínio é seu e pode ser usado em qualquer site futuro.",
     },
     {
@@ -61,8 +61,7 @@ const ListDuvidas: IDuvidas[] = [
         id: 12,
         title: "Como saberei se meu site está sendo bem acessado?",
         description: "Usamos Google Analytics para monitorar os acessos e fornecer dados detalhados em tempo real.", 
-    },
-
+    }, 
 ]
 
 export default ListDuvidas

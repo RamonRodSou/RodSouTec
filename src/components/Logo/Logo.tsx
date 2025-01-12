@@ -41,8 +41,8 @@ const Logo = (props: Props) => {
 
   return (
     <Box display="flex" flexDirection="row" alignItems="center" gap=".5rem" sx={{cursor:'pointer'}} onClick={handleHome}>
-      <LogoImage src={LogoImg} alt="Logo do Site RodSouDev Tech" size={size} />
-      <TituloLogo>RodSouTech</TituloLogo>
+      <LogoImage src={LogoImg} alt="Logo do Site TechnoSou" size={size} />
+      <TituloLogo>TechnoSou</TituloLogo>
     </Box>
   )
 }

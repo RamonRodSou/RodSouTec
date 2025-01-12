@@ -4,11 +4,7 @@ import iconMsg from '../../assets/img/vantagem/icon-msg.png'
 import iconDom from '../../assets/img/vantagem/icon-web.png'
 import iconSite from '../../assets/img/vantagem/icon-site.png'
 import iconExp from '../../assets/img/vantagem/icon-exp.png'
-
-
-
 import IVantagem from '../../interface/IVantagem'
-
 
 const ListVantagem: IVantagem[] = [
 
@@ -48,7 +44,6 @@ const ListVantagem: IVantagem[] = [
         description: "Desenvolvemos sites e aplicativos com foco na experiência do usuário, garantindo interfaces intuitivas e designs atraentes que mantêm seus clientes engajados.",
         img: iconExp,
     },
-
 ]
 
 export default ListVantagem

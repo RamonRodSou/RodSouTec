@@ -9,7 +9,6 @@ describe("Testando Componente Apresentacao", () => {
         expect(title).toBeInTheDocument()
     })
     
-
     it("Deve haver uma imagem", async () => {
         render(<Apresentacao/>)
 
