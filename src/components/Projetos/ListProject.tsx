@@ -1,3 +1,4 @@
+import dashboard from '../../assets/img/project/dashboard.webp'
 import oxicom from '../../assets/img/project/oxicom.webp'
 import iaf from '../../assets/img/project/iaf.webp'
 import cardapio from '../../assets/img/project/cardapio.webp'
@@ -9,8 +10,17 @@ import OnlyCifra from '../../assets/img/project/OnlyCifra.webp'
 import IProject from '../../interface/IProject'
 
 const listProject: IProject[] = [
+
     {
         id: 1,
+        name: "Dashboard - Gestão Para Igrejas",
+        description: "Aplicação web funcional utilizada por igrejas para organização de ministérios, grupos e membros. Funcionalidades: Cadastro e controle de membros, visitantes, ministérios e escalas, Registro de agendas, reuniões e relatórios, Geração de gráficos e dashboards, Design mobile-first e acessível Destaques: Projeto completo, desenvolvido do zero, com domínio do ciclo front-end e foco em usabilidade.",
+        img: dashboard,
+        url: 'TechnoSou.com.br',
+        arquivo: 'Dashboard'
+    },
+    {
+        id: 2,
         name: "Oxicom Energia Solar",
         description: " Líder em soluções sustentáveis, a Oxicom oferece sistemas de energia solar inovadores para residências, empresas e indústrias, promovendo um futuro mais verde.",
         img: oxicom,
@@ -18,7 +28,7 @@ const listProject: IProject[] = [
         arquivo: 'Oxicom'
     },
     {
-        id: 2,
+        id: 3,
         name: "Igreja Adoração e Fé",
         description: "Site intuitiva com link direto para cultos online no YouTube, fotos de reuniões e eventos, endereços das células no Google Maps e destaque das atividades da igreja.",
         img: iaf,
@@ -26,7 +36,7 @@ const listProject: IProject[] = [
         arquivo: 'IAF'
     },
     {
-        id: 3,
+        id: 4,
         name: "Cardápio Online",
         description: "Uma plataforma completa onde os clientes podem visualizar todos os produtos da lanchonete, selecionar itens, adicionar ao pedido e finalizar a compra facilmente.",
         img: cardapio,
@@ -34,7 +44,7 @@ const listProject: IProject[] = [
         arquivo: 'Cardapio'
     },
     {
-        id: 4,
+        id: 5,
         name: "Agendamento Online",
         description: "Site prático para agendar serviços como barbearia, permitindo aos clientes marcar horários de forma fácil e rápida. ",
         img: agendou,

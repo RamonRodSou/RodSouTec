@@ -9,10 +9,21 @@ export default defineConfig({
         globals: true,
         environment: "jsdom",
         setupFiles: ["./src/setupTests.ts"],
-        include:["src/**/*.spec.tsx"],
-
+        include: ["src/**/*.spec.tsx"],
+        exclude: ["src/**/*.spec.ts", "src/**/*.test.ts", "src/**/*.test.tsx"]
     },
     resolve: {
         alias: [{ find: "@", replacement: path.resolve(__dirname, "./src")}],
     },
+    build: {
+        rollupOptions: {
+            output: {
+                manualChunks(id) {
+                    if (id.includes('.spec.') || id.includes('.test.')) {
+                        return 'ignore';
+                    }
+                }
+            }
+        }
+    }
 })

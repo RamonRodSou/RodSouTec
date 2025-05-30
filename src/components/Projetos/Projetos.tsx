@@ -156,7 +156,6 @@ const Projetos = () => {
     }
 
     function handleProjetos() {
-
         navegate('/projetos')
     }
 
