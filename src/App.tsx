@@ -8,6 +8,8 @@ import Solutions from "./components/Solutions/Solutions"
 import { BrowserRouter, Route, Routes } from "react-router-dom"
 import Projetos from "./components/Projetos/Projetos"
 import ArrowCircleUpIcon from '@mui/icons-material/ArrowCircleUp'
+import PortifolioData from "./components/Portifolio/PortifolioData"
+import Portifolio from "@components/Portifolio/Portifolio"
 
 function App() {
 
@@ -15,7 +17,7 @@ function App() {
     window.scrollTo({
       top: 0,
       behavior: 'smooth'
-      })
+    })
   }
 
   const ContainerApresentacao = styled(Box)({
@@ -51,8 +53,8 @@ function App() {
     background: 'linear-gradient(90deg, #000c29, #84019e)',
   })
 
-  const StyledFadeInBox = styled(Box) ({
-    cursor:'pointer',
+  const StyledFadeInBox = styled(Box)({
+    cursor: 'pointer',
     opacity: 0,
     animation: `fadeIn 3s ease-out forwards`,
     animationDelay: '4s',
@@ -95,6 +97,15 @@ function App() {
               <Projetos />
             </Container>
           } />
+
+          <Route path="/portifolio" element={
+            <Container maxWidth="xl" sx={{ padding: '1rem' }}>
+              <Header />
+              <Portifolio />
+            </Container>
+          } />
+
+          <Route path="/lista/:path" element={<PortifolioData />} />
 
         </Routes>
 

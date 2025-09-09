@@ -5,4 +5,4 @@ export default interface IProject {
     img: string
     url: string
     arquivo: string
-}
+} 

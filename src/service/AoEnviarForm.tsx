@@ -5,7 +5,7 @@ interface FormData {
   email?: string
   telefone?: number
   servico?: string
-  data?:string
+  data?: string
 }
 
 export default async function AoEnviarForm(dados: FormData) {
@@ -22,7 +22,7 @@ export default async function AoEnviarForm(dados: FormData) {
 
   let token = import.meta.env.VITE_APP_API_TELEGRAM_TOKEN;
   let chatId = import.meta.env.VITE_APP_TELEGRAM_CHAT_ID;
-  
+
   const urlApiTelegram = `https://api.telegram.org/bot${token}/sendMessage?chat_id=${chatId}&text=${mensagemFormatada}`
 
   const response = await PostMsg(urlApiTelegram)
@@ -33,4 +33,3 @@ export default async function AoEnviarForm(dados: FormData) {
     console.error('Erro ao enviar a mensagem.')
   }
 }
-  

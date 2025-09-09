@@ -1,9 +1,9 @@
 import { Box, Button, styled, TextField } from '@mui/material'
 import { useContext, useState } from 'react'
 import contato from '../../assets/img/contato.png'
-import AoEnviarForm from '../../service/AoEnviarForm'
 import { Fade } from "react-awesome-reveal"
 import ValidationContext from '../ValidationContext/ValidationContext'
+import AoEnviarForm from '../../service/AoEnviarForm'
 
 const ContainerFaleConosco = styled(Box)(({ theme }) => ({
     backgroundColor: 'var(--faleConoscoSecBg-color)',
@@ -100,7 +100,7 @@ const FaleConosco = () => {
         const emailValido = emailV(email)
         const telefoneValido = telefone(celphone || 0)
         const servicoValido = servico(message)
-    
+
         let mensagemErro = '';
         if (!nomeValido.valido) {
             mensagemErro += `Nome: ${nomeValido.texto}\n`;
@@ -119,7 +119,7 @@ const FaleConosco = () => {
             alert(`Corrija os seguintes erros:\n${mensagemErro}`);
             return;
         }
-        
+
         const dados = {
             nome: name,
             email: email,
@@ -188,7 +188,7 @@ const FaleConosco = () => {
                     <Img src={contato} alt='Imagem contato' />
                 </BoxFaleConosco>
             </ContainerFaleConosco>
-        </Fade>    
+        </Fade>
     )
 }
 
