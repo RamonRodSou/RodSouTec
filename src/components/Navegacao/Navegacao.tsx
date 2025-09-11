@@ -67,7 +67,7 @@ const Navegacao = () => {
   }
 
   function handleScrollToContact() {
-    window.open('https://api.whatsapp.com/send/?phone=5521972923210&text=Ol%C3%A1+RodSou+Tech.+%20Gostaria+de+informa%C3%A7%C3%B5es+sobre+cria%C3%A7%C3%A3o+de+sites+e+aplicativos.&type=phone_number&app_absent=0')
+    window.open('https://api.whatsapp.com/send/?phone=5521973102724&text=Ol%C3%A1+TechnoSou.+%20Gostaria+de+informa%C3%A7%C3%B5es.&type=phone_number&app_absent=0')
   }
 
   const menuItems = (

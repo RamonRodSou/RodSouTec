@@ -12,16 +12,16 @@ const BoxContainer = styled(Box)(({ theme }) => ({
     justifyContent: 'center',
     padding: '2rem',
     borderRadius: '5px',
+
     boxShadow: '0.25rem 0.37rem 1.25rem #00000036 ',
 
     [theme.breakpoints.down('md')]: {
         alignItems: 'center',
-
     },
 }))
 
 const Titulo = styled('h2')(({ theme }) => ({
-    marginTop: 0,
+    margin: 0,
     fontSize: '2.5rem',
     fontWeight: 'bold',
     fontFamily: 'Orbitron',
@@ -34,6 +34,20 @@ const Titulo = styled('h2')(({ theme }) => ({
     [theme.breakpoints.down('sm')]: {
         textAlign: 'center',
         fontSize: '2rem',
+    }
+}))
+
+const SubTitle = styled('h3')(({ theme }) => ({
+    marginTop: 0,
+    marginBottom: '2rem',
+    fontSize: '1rem',
+    fontWeight: 'bold',
+    fontFamily: 'Orbitron',
+    background: 'linear-gradient(to right,#fff ,var(--titleSection-color))',
+    WebkitBackgroundClip: 'text',
+    WebkitTextFillColor: 'transparent',
+    [theme.breakpoints.down('sm')]: {
+        fontSize: '.9rem',
     }
 }))
 
@@ -87,7 +101,7 @@ const BoxPortifolio = styled(Box)(({ theme }) => ({
 const Projeto = styled(Box)(({ theme }) => ({
     display: 'flex',
     justifyContent: 'flex-start',
-    alignItems: 'center',
+    alignItems: 'start',
     width: '100%',
     gap: '10rem',
     [theme.breakpoints.down('md')]: {
@@ -100,6 +114,8 @@ const ImgBox = styled('img')(({ theme }) => ({
     borderRadius: '10px',
     transition: 'transform 0.3s ease-in-out',
     cursor: 'pointer',
+    position: 'sticky',
+    top: '100px',
     width: '40%',
     height: 350,
 
@@ -112,6 +128,7 @@ const ImgBox = styled('img')(({ theme }) => ({
     [theme.breakpoints.down(900)]: {
         width: '100%',
         height: 430,
+        position: 'static',
     },
 
     [theme.breakpoints.down('sm')]: {
@@ -171,6 +188,7 @@ const Portifolio = () => {
     return (
         <BoxContainer >
             <Titulo>Portifólio</Titulo>
+            <SubTitle>Meus 10 Projetos + Relavantes</SubTitle>
             <BoxPortifolio>
                 {
                     items.map((items, index) => (

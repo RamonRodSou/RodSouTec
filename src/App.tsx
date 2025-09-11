@@ -10,6 +10,8 @@ import Projetos from "./components/Projetos/Projetos"
 import ArrowCircleUpIcon from '@mui/icons-material/ArrowCircleUp'
 import PortifolioData from "./components/Portifolio/PortifolioData"
 import Portifolio from "@components/Portifolio/Portifolio"
+import HeroSection from "@components/HeroSection/HeroSection"
+import Tecnologias from "@components/Tecnologias/Tecnologias"
 
 function App() {
 
@@ -101,6 +103,9 @@ function App() {
           <Route path="/portifolio" element={
             <Container maxWidth="xl" sx={{ padding: '1rem' }}>
               <Header />
+              <HeroSection />
+              <Tecnologias />
+
               <Portifolio />
             </Container>
           } />

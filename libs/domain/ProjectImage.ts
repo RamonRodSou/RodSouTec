@@ -3,16 +3,18 @@ export class ProjectImage {
 
     constructor(
         public name: string,
-        public type: string,
+        public title: string,
         public url: string,
+        public repository?: string | undefined,
         public readonly id: number = ProjectImage.counter++
     ) { }
 
     static fromJson(json: any): ProjectImage {
         const image = new ProjectImage(
             json.name,
-            json.type,
+            json.title,
             json.url,
+            json.repository ?? undefined,
             json.id
         )
 
@@ -27,7 +29,8 @@ export class ProjectImage {
         return {
             id: this.id,
             name: this.name,
-            type: this.type,
+            title: this.title,
+            repository: this.repository,
             url: this.url
         };
     }

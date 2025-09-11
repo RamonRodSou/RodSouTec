@@ -1,9 +1,12 @@
-import { Box, Button, styled, TextField } from '@mui/material'
-import { useContext, useState } from 'react'
+import { Alert, Box, Button, styled, TextField } from '@mui/material'
+import { FormEvent, useState } from 'react'
 import contato from '../../assets/img/contato.png'
 import { Fade } from "react-awesome-reveal"
-import ValidationContext from '../ValidationContext/ValidationContext'
-import AoEnviarForm from '../../service/AoEnviarForm'
+import { SendFormToN8n } from '@service/N8NConection'
+import { Person } from '@domain/Person'
+import { sanitize, validateForm } from '@utils/validate'
+import { StringUtil } from '@utils/string'
+import { Errors } from '@utils/IError'
 
 const ContainerFaleConosco = styled(Box)(({ theme }) => ({
     backgroundColor: 'var(--faleConoscoSecBg-color)',
@@ -15,8 +18,8 @@ const ContainerFaleConosco = styled(Box)(({ theme }) => ({
     margin: '3rem 0 ',
     boxShadow: '0.25rem 0.37rem 1.25rem #00000036 ',
 
-    [theme.breakpoints.down(900)]: {
-        padding: '4rem 1rem  ',
+    [theme.breakpoints.down(970)]: {
+        padding: '1rem',
     },
 
     [theme.breakpoints.down('sm')]: {
@@ -48,7 +51,7 @@ const BoxFaleConosco = styled(Box)(({ theme }) => ({
     justifyContent: 'center',
     gap: '2rem',
 
-    [theme.breakpoints.down(900)]: {
+    [theme.breakpoints.down(970)]: {
         width: '90%',
     },
 
@@ -61,7 +64,7 @@ const BoxFaleConosco = styled(Box)(({ theme }) => ({
 }))
 
 const Img = styled('img')((({ theme }) => ({
-    [theme.breakpoints.down(900)]: {
+    [theme.breakpoints.down(970)]: {
         width: '50%',
     },
 
@@ -71,13 +74,13 @@ const Img = styled('img')((({ theme }) => ({
     }
 })))
 
-const FormFaleC = styled('form')((({ theme }) => ({
+const FormSubmit = styled('form')((({ theme }) => ({
     width: '50%',
     display: 'flex',
     flexDirection: 'column',
     alignItems: 'space-between',
 
-    [theme.breakpoints.down(900)]: {
+    [theme.breakpoints.down(970)]: {
         width: '80%',
     },
 
@@ -87,104 +90,129 @@ const FormFaleC = styled('form')((({ theme }) => ({
 })))
 
 const FaleConosco = () => {
-    const [name, setName] = useState<string>('')
-    const [email, setEmail] = useState<string>('')
-    const [celphone, setCelphone] = useState<number | undefined>()
-    const [message, setMessage] = useState<string>('')
-    const { nome, emailV, telefone, servico } = useContext(ValidationContext)
+    const [form, setForm] = useState<Person>(new Person);
+    const [loading, setLoading] = useState<boolean>(false);
+    const [successMsg, setSuccessMsg] = useState<string | null>(null)
+    const [errors, setErrors] = useState<Errors>({});
 
-    async function handleSubmit(event: React.FormEvent) {
-        event.preventDefault()
+    function handleChange(field: keyof Person, value: string | Date | null) {
+        setForm(prev => {
+            const data = { ...prev, [field]: value };
+            return Person.fromJson(data);
+        });
+    };
 
-        const nomeValido = nome(name)
-        const emailValido = emailV(email)
-        const telefoneValido = telefone(celphone || 0)
-        const servicoValido = servico(message)
+    function formatForm(form: Person): Person {
+        return Person.fromJson({
+            ...form,
+            name: sanitize(String(form.name ?? StringUtil.EMPTY)),
+            description: sanitize(String(form.description ?? StringUtil.EMPTY)),
+            phone: String(form.phone ?? StringUtil.EMPTY).replace(/\D/g, StringUtil.EMPTY),
+            email: sanitize(String(form.email ?? StringUtil.EMPTY)),
+        });
+    }
 
-        let mensagemErro = '';
-        if (!nomeValido.valido) {
-            mensagemErro += `Nome: ${nomeValido.texto}\n`;
+    function validateFormData(form: Person): Errors {
+        const error = validateForm(form);
+        return error;
+    }
+    async function sendForm(
+        form: Person,
+        setForm: (form: Person) => void,
+        setErrors: (errors: Errors) => void,
+        setSuccessMsg: (msg: string | null) => void
+    ) {
+        try {
+            await SendFormToN8n(form);
+            setForm(new Person());
+            setErrors({});
+            setSuccessMsg('Formulário enviado com sucesso, em breve entraremos em contato!');
+            setTimeout(() => setSuccessMsg(null), 5000);
+        } catch (err) {
+            console.error(err);
+            setSuccessMsg('Desculpa, infelizmente ocorreu um erro. Tente novamente.');
         }
-        if (!emailValido.valido) {
-            mensagemErro += `E-mail: ${emailValido.texto}\n`;
-        }
-        if (!telefoneValido.valido) {
-            mensagemErro += `Telefone: ${telefoneValido.texto}\n`;
-        }
-        if (!servicoValido.valido) {
-            mensagemErro += `Serviço: ${servicoValido.texto}\n`;
-        }
+    }
 
-        if (mensagemErro) {
-            alert(`Corrija os seguintes erros:\n${mensagemErro}`);
+    async function handleSubmit(event: FormEvent<HTMLFormElement>) {
+        event.preventDefault();
+        setLoading(true);
+        setSuccessMsg(null);
+
+        const formattedForm = formatForm(form);
+        const errors = validateFormData(formattedForm);
+
+        if (Object.keys(errors).length > 0) {
+            setErrors(errors);
+            setLoading(false);
             return;
         }
 
-        const dados = {
-            nome: name,
-            email: email,
-            telefone: celphone || 0,
-            servico: message,
-            data: new Date().toISOString()
-        }
-
-        const enviar = AoEnviarForm(dados)
-        await enviar
-        alert('Mensagem enviada com sucesso!')
-        setName('')
-        setEmail('')
-        setCelphone(undefined)
-        setMessage('')
+        await sendForm(formattedForm, setForm, setErrors, setSuccessMsg);
+        setLoading(false);
     }
 
     return (
         <Fade duration={2000}>
             <ContainerFaleConosco id='contato'>
                 <Titulo>Fale Conosco</Titulo>
+                {successMsg && (
+                    <Alert severity={successMsg.startsWith("For") ? "success" : "error"}>
+                        {successMsg}
+                    </Alert>
+                )}
                 <BoxFaleConosco >
-                    <FormFaleC onSubmit={handleSubmit}>
-                        <Box marginBottom="1rem">
+                    <FormSubmit onSubmit={handleSubmit}>
+                        <Box marginBottom="1rem" component="div">
                             <TextField
-                                label="Seu nome"
-                                value={name}
-                                onChange={(e) => setName(e.target.value)}
+                                label="Nome Completo"
+                                value={form?.name}
+                                onChange={(it) => handleChange('name', it.target.value)}
                                 fullWidth
                                 required
+                                error={!!errors.lastname}
+                                helperText={errors.lastname}
                             />
                         </Box>
-                        <Box marginBottom="1rem">
+                        <Box marginBottom="1rem" component="div">
                             <TextField
-                                label="Seu e-mail"
-                                value={email}
-                                onChange={(e) => setEmail(e.target.value)}
+                                label="Telefone"
+                                value={form?.phone}
+                                onChange={(it) => handleChange('phone', it.target.value)}
                                 fullWidth
+                                placeholder='21900001111'
                                 required
+                                error={!!errors.phone}
+                                helperText={errors.phone}
                             />
                         </Box>
-                        <Box marginBottom="1rem">
+                        <Box marginBottom="1rem" component="div">
                             <TextField
-                                label="Seu telefone"
-                                value={celphone || ''}
-                                onChange={(e) => setCelphone(Number(e.target.value))}
+                                label="email"
+                                value={form?.email}
+                                onChange={(it) => handleChange('email', it.target.value)}
                                 fullWidth
-                                required
+                                error={!!errors.email}
+                                helperText={errors.email}
                             />
                         </Box>
-                        <Box marginTop="1rem" >
+
+                        <Box marginBottom="1rem" component="div">
                             <TextField
                                 label="Serviço"
                                 required
                                 multiline
                                 rows={4}
-                                value={message}
-                                onChange={(e) => setMessage(e.target.value)}
+                                value={form?.description}
+                                onChange={(it) => handleChange('description', it.target.value)}
                                 fullWidth
                             />
                         </Box>
-                        <Button type="submit" variant="contained" color="info" style={{ marginTop: '1rem' }}>
-                            Enviar
+
+                        <Button type="submit" variant="contained" color="primary" fullWidth>
+                            {loading ? "Enviando..." : "Agendar"}
                         </Button>
-                    </FormFaleC>
+                    </FormSubmit>
                     <Img src={contato} alt='Imagem contato' />
                 </BoxFaleConosco>
             </ContainerFaleConosco>
@@ -192,4 +220,4 @@ const FaleConosco = () => {
     )
 }
 
-export default FaleConosco
+export default FaleConosco;

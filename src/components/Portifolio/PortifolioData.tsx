@@ -1,7 +1,7 @@
 import { Box, Grid, styled, Typography } from '@mui/material'
 import { useEffect, useState } from 'react'
 import { Fade } from "react-awesome-reveal";
-import { useParams } from 'react-router-dom'
+import { useNavigate, useParams } from 'react-router-dom'
 import { ProjectImage } from '@domain/ProjectImage';
 import { portifolioPath } from '@utils/portifolioPath';
 
@@ -32,10 +32,27 @@ const Titulo = styled('h2')(({ theme }) => ({
     }
 }))
 
+const RepositorioLink = styled('p')(({ theme }) => ({
+    display: 'inline',
+    fontSize: '1rem',
+    fontWeight: 'bold',
+    fontFamily: 'Orbitron',
+    background: 'linear-gradient(to right,#fff ,var(--titleSection-color))',
+    WebkitBackgroundClip: 'text',
+    WebkitTextFillColor: 'transparent',
+
+    [theme.breakpoints.down('sm')]: {
+        display: 'block',
+        fontSize: '1rem',
+        textAlign: 'center',
+
+    }
+}))
+
 const SubGroupTitle = styled(Typography)(({ theme }) => ({
     fontSize: '1.8rem',
     fontWeight: 600,
-    margin: '2rem 0 1rem 0',
+    margin: '2rem',
     fontFamily: 'Orbitron',
     color: 'var(--titleSection-color)',
     textTransform: 'uppercase',
@@ -69,6 +86,7 @@ const ImgBox = styled('img')(({ theme }) => ({
 const PortifolioData = () => {
     const { path } = useParams<{ path: string }>()
     const [data, setData] = useState<ProjectImage[]>([])
+    const navegate = useNavigate();
 
     useEffect(() => {
         if (path && portifolioPath[path]) {
@@ -84,9 +102,27 @@ const PortifolioData = () => {
         return acc
     }, {})
 
+    function navegateToRepository(link?: string) {
+        if (!link) return;
+        if (link.startsWith("http")) {
+            window.open(link, "_blank");
+        } else {
+            navegate(link);
+        }
+    }
+
     return (
         <BoxContainer>
-            <Titulo>Projetos</Titulo>
+            {data.map((it) => (
+                <Box>
+                    <Titulo>Projeto</Titulo>
+                    {it.repository && (
+                        <RepositorioLink onClick={() => navegateToRepository(it.repository)}>
+                            Repositório
+                        </RepositorioLink>
+                    )}
+                </Box>
+            )).at(0)}
 
             {Object.keys(groupedByName).length === 0 ? (
                 <Typography textAlign="center">Nenhum projeto encontrado.</Typography>

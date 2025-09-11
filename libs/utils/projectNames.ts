@@ -1,0 +1,9 @@
+export const dashboardTitulo: string = 'IAF Gestor - A Solução Completa de CRM e ERP para Igrejas';
+export const apiGestorTitulo: string = 'API Java SpringBoot CRM';
+export const doutorVisaoTitulo: string = 'Doutor Visão - Landing Page, Agendamento Inteligente, N8N Agente';
+export const onlyCifraTitulo: string = 'App OnlyCifra - Gerenciamento de Cifras Musicais';
+export const leitorPlacaTitulo: string = 'App Leitor Placas para Gestão de Estacionamento';
+export const formN8Ntitulo: string = 'Tecnologia com Propósito para o Natal Solidário';
+export const kidflixTitulo: string = 'KidFlix - Uma Solução Criativa para um Problema Real';
+export const cardapioTitulo: string = 'Cardápio - Pedidos Online';
+export const aluraCaseTitulo: string = 'Resolvendo o Case Técnico da Alura com Foco em Boas Práticas';
