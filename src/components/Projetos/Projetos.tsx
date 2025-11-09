@@ -65,6 +65,7 @@ const Projeto = styled(Box)(({ theme }) => ({
     display: 'flex',
     justifyContent: 'flex-start',
     alignItems: 'center',
+    position: 'sticky',
     width: '100%',
     gap: '10rem',
     [theme.breakpoints.down('md')]: {
@@ -77,18 +78,29 @@ const ImgBox = styled('img')(({ theme }) => ({
     borderRadius: '10px',
     transition: 'transform 0.3s ease-in-out',
     cursor: 'pointer',
-    width: '40%',
+    position: 'sticky',
+    top: '100px',
+    width: 550,
     height: 350,
 
     '&:hover': {
         opacity: 0.9,
         transform: 'scale(1.1)'
+    },
 
+    [theme.breakpoints.down(1200)]: {
+        width: 450,
+    },
+
+    [theme.breakpoints.down(960)]: {
+        width: 400,
+        height: 300,
     },
 
     [theme.breakpoints.down(900)]: {
         width: '100%',
         height: 430,
+        position: 'static',
     },
 
     [theme.breakpoints.down('sm')]: {

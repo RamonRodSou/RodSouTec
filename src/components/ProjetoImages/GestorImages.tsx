@@ -24,10 +24,10 @@ export const gestor: ProjectImage[] = [
     new ProjectImage("Membros", dashboardTitulo, StringUtil.URL + "images/dashboard/members/1.0-members-mobile.png"),
     new ProjectImage("Membros", dashboardTitulo, StringUtil.URL + "images/dashboard/members/1.1-members-mobile.png"),
 
-    new ProjectImage("Relatorio Igreja", dashboardTitulo, StringUtil.URL + "images/dashboard/relatorio/1.0-relatorio.png"),
-    new ProjectImage("Relatorio Igreja", dashboardTitulo, StringUtil.URL + "images/dashboard/relatorio/1.1-relatorio.png"),
-    new ProjectImage("Relatorio Igreja", dashboardTitulo, StringUtil.URL + "images/dashboard/relatorio/1.2-relatorio.png"),
-    new ProjectImage("Relatorio Igreja", dashboardTitulo, StringUtil.URL + "images/dashboard/relatorio/1.3-relatorio.png"),
+    new ProjectImage("Relatório Igreja", dashboardTitulo, StringUtil.URL + "images/dashboard/relatorio/1.0-relatorio.png"),
+    new ProjectImage("Relatório Igreja", dashboardTitulo, StringUtil.URL + "images/dashboard/relatorio/1.1-relatorio.png"),
+    new ProjectImage("Relatório Igreja", dashboardTitulo, StringUtil.URL + "images/dashboard/relatorio/1.2-relatorio.png"),
+    new ProjectImage("Relatório Igreja", dashboardTitulo, StringUtil.URL + "images/dashboard/relatorio/1.3-relatorio.png"),
 
     new ProjectImage("Célula", dashboardTitulo, StringUtil.URL + "images/dashboard/gc/1.0-GC.png"),
     new ProjectImage("Célula", dashboardTitulo, StringUtil.URL + "images/dashboard/gc/1.1-GC.png"),
@@ -37,12 +37,12 @@ export const gestor: ProjectImage[] = [
     new ProjectImage("Célula", dashboardTitulo, StringUtil.URL + "images/dashboard/gc/1.1-GC-mobile.png"),
 
 
-    new ProjectImage("Relatorio GC", dashboardTitulo, StringUtil.URL + "images/dashboard/relatorio-gc/1.0-Relatorio-GC.png"),
-    new ProjectImage("Relatorio GC", dashboardTitulo, StringUtil.URL + "images/dashboard/relatorio-gc/1.0-Relatorio-GC.png"),
-    new ProjectImage("Relatorio GC", dashboardTitulo, StringUtil.URL + "images/dashboard/relatorio-gc/1.2-Relatorio-GC.png"),
-    new ProjectImage("Relatorio GC", dashboardTitulo, StringUtil.URL + "images/dashboard/relatorio-gc/1.3-Relatorio-GC.png"),
-    new ProjectImage("Relatorio GC", dashboardTitulo, StringUtil.URL + "images/dashboard/relatorio-gc/1.0-Relatorio-GC-mobile.png"),
-    new ProjectImage("Relatorio GC", dashboardTitulo, StringUtil.URL + "images/dashboard/relatorio-gc/1.1-Relatorio-GC-mobile.png"),
+    new ProjectImage("Relatório GC", dashboardTitulo, StringUtil.URL + "images/dashboard/relatorio-gc/1.0-Relatorio-GC.png"),
+    new ProjectImage("Relatório GC", dashboardTitulo, StringUtil.URL + "images/dashboard/relatorio-gc/1.0-Relatorio-GC.png"),
+    new ProjectImage("Relatório GC", dashboardTitulo, StringUtil.URL + "images/dashboard/relatorio-gc/1.2-Relatorio-GC.png"),
+    new ProjectImage("Relatório GC", dashboardTitulo, StringUtil.URL + "images/dashboard/relatorio-gc/1.3-Relatorio-GC.png"),
+    new ProjectImage("Relatório GC", dashboardTitulo, StringUtil.URL + "images/dashboard/relatorio-gc/1.0-Relatorio-GC-mobile.png"),
+    new ProjectImage("Relatório GC", dashboardTitulo, StringUtil.URL + "images/dashboard/relatorio-gc/1.1-Relatorio-GC-mobile.png"),
 
     new ProjectImage("Escala Servico", dashboardTitulo, StringUtil.URL + "images/dashboard/escala/1.0-escala.png"),
     new ProjectImage("Escala Servico", dashboardTitulo, StringUtil.URL + "images/dashboard/escala/1.1-escala.png"),
@@ -66,8 +66,8 @@ export const gestor: ProjectImage[] = [
     new ProjectImage("Financeiro", dashboardTitulo, StringUtil.URL + "images/dashboard/financas/1.0-financeiro-mobile.png"),
     new ProjectImage("Financeiro", dashboardTitulo, StringUtil.URL + "images/dashboard/financas/1.1-financeiro-mobile.png"),
 
-    new ProjectImage("Automaçao", dashboardTitulo, StringUtil.URL + "images/dashboard/n8n/Fluxo_Mensagem_aniversariantes.png"),
-    new ProjectImage("Automaçao", dashboardTitulo, StringUtil.URL + "images/dashboard/n8n/Fluxo_msg_em_massa.png"),
+    new ProjectImage("Automação", dashboardTitulo, StringUtil.URL + "images/dashboard/n8n/Fluxo_Mensagem_aniversariantes.png"),
+    new ProjectImage("Automação", dashboardTitulo, StringUtil.URL + "images/dashboard/n8n/Fluxo_msg_em_massa.png"),
 ]
 
 export const doutorVisao: ProjectImage[] = [
@@ -119,8 +119,8 @@ export const leitorPlaca: ProjectImage[] = [
 ]
 
 export const formN8N: ProjectImage[] = [
-    new ProjectImage("Compra de Igressos", formN8Ntitulo, StringUtil.URL + "images/ingresso/1.1-form.png", "https://github.com/RamonRodSou/Form-n8n-whatsapp"),
-    new ProjectImage("Compra de Igressos", formN8Ntitulo, StringUtil.URL + "images/ingresso/1.2-form.png"),
+    new ProjectImage("Compra de Ingressos", formN8Ntitulo, StringUtil.URL + "images/ingresso/1.1-form.png", "https://github.com/RamonRodSou/Form-n8n-whatsapp"),
+    new ProjectImage("Compra de Ingressos", formN8Ntitulo, StringUtil.URL + "images/ingresso/1.2-form.png"),
     new ProjectImage("Workflow N8N", formN8Ntitulo, StringUtil.URL + "images/ingresso/2.0-fluxo_n8n.png"),
     new ProjectImage("Workflow N8N", formN8Ntitulo, StringUtil.URL + "images/ingresso/2.1-fluxo_n8n.png"),
 ]

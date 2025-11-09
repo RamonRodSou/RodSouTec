@@ -3,8 +3,8 @@ import { StringUtil } from '@utils/string'
 
 export const listTecnologias: Tecnologia[] = [
 
-    new Tecnologia('TYPESCRIPT', "LINGUAGEM", StringUtil.URL + "images/Icons//icons8-typescript-40.png"),
-    new Tecnologia('JAVASCRIPT', "LINGUAGEM", StringUtil.URL + "images/Icons//icons8-javascript-40.png"),
+    new Tecnologia('TYPESCRIPT', "LINGUAGEM", StringUtil.URL + "images/Icons/icons8-typescript-40.png"),
+    new Tecnologia('JAVASCRIPT', "LINGUAGEM", StringUtil.URL + "images/Icons/icons8-javascript-40.png"),
     new Tecnologia('REACT', "FRAMEWORK", StringUtil.URL + "images/Icons/icons8-react-40.png"),
     new Tecnologia('NEXT', "FRAMEWORK", StringUtil.URL + "images/Icons/icons8-next-js-40.png"),
     new Tecnologia('ANGULA', "FRAMEWORK", StringUtil.URL + "images/Icons/icons8-angular-40.png"),

@@ -1,7 +1,8 @@
-import { Box, Grid, styled, Typography } from '@mui/material'
+import { Box, Button, Grid, styled, Typography } from '@mui/material'
 import { useEffect, useRef } from 'react';
 import { Fade } from "react-awesome-reveal";
 import YouTube, { YouTubeProps } from 'react-youtube';
+import useIsMobile from './useIsMobile';
 
 const BoxApresentacao = styled(Box)(({ theme }) => ({
 	display: 'flex',
@@ -89,7 +90,34 @@ const BoxYoutube = styled(Box)(({ theme }) => ({
 	},
 }));
 
+const BaixarPDFBtn = styled(Button)(({ theme }) => ({
+	backgroundColor: 'var(--faleConoscoBg-color)',
+	margin: '2rem 0',
+	color: '#fff',
+	padding: '1rem 2rem',
+	borderRadius: '0.5rem',
+	cursor: 'pointer',
+	textDecoration: 'none',
+
+	'&:hover': {
+		backgroundColor: 'var(--faleConoscoBgHover-color)',
+	},
+	'&:active': {
+		backgroundColor: 'var(--faleConoscoBgActive-color)',
+	},
+
+	[theme.breakpoints.down('md')]: {
+		padding: '.5rem 1rem',
+	},
+
+	[theme.breakpoints.down('sm')]: {
+		padding: '1rem 2rem',
+	},
+}))
+
 const HeroSection = () => {
+	const isMobile = useIsMobile();
+
 	const playerRef = useRef<any>(null);
 
 	const onPlayerReady: YouTubeProps["onReady"] = (event) => {
@@ -122,6 +150,10 @@ const HeroSection = () => {
 		};
 	}, []);
 
+	function handleOpenCurriculo(): void {
+		window.open(`/Pdf/Curriculo_Ramon_Rodrigues_Desenvolvedor_FullStack_SET.pdf`, '_blank')
+	}
+
 	return (
 		<BoxApresentacao id='FaleConosco' >
 			<Grid display={'flex'} flexDirection={'column'} alignItems={'flex-start'} justifyContent={'start'}>
@@ -135,6 +167,11 @@ const HeroSection = () => {
 						Desenvolvedor de Soluções | Especialista em Java, Spring e React
 					</Typography>
 				</Fade>
+				<Fade direction="down">
+					<BaixarPDFBtn onClick={handleOpenCurriculo}>Currículo</BaixarPDFBtn>
+				</Fade>
+
+
 			</Grid>
 			<BoxYoutube>
 				<YouTube
@@ -150,6 +187,28 @@ const HeroSection = () => {
 					}}
 					onReady={onPlayerReady}
 				/>
+				{isMobile && (
+					<button
+						style={{
+							position: "absolute",
+							bottom: "5px",
+							left: "10px",
+							background: "rgba(0,0,0,0.6)",
+							color: "#fff",
+							border: "none",
+							borderRadius: "8px",
+							padding: "8px 12px",
+						}}
+						onClick={() => {
+							if (playerRef.current) {
+								playerRef.current.unMute();
+								playerRef.current.setVolume(60);
+							}
+						}}
+					>
+						🔊 Ativar
+					</button>
+				)}
 			</BoxYoutube>
 
 		</BoxApresentacao >

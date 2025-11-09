@@ -63,8 +63,8 @@ const FaleConosco = styled(Link)(({ theme }) => ({
   color: '#fff',
   padding: '1rem 2rem',
   borderRadius: '0.5rem',
-  cursor:'pointer',
-  textDecoration:'none',
+  cursor: 'pointer',
+  textDecoration: 'none',
 
   '&:hover': {
     backgroundColor: 'var(--faleConoscoBgHover-color)',
@@ -76,15 +76,16 @@ const FaleConosco = styled(Link)(({ theme }) => ({
   [theme.breakpoints.down('md')]: {
     padding: '.5rem 1rem',
   },
-  
+
   [theme.breakpoints.down('sm')]: {
-    padding: '1rem 2rem',  },
+    padding: '1rem 2rem',
+  },
 }))
 
 const Apresentacao = () => {
 
   function handleScrollToContact() {
-    const contactElement = document.querySelector('.css-oauv0g')
+    const contactElement = document.querySelector('#faleConosco')
     if (contactElement) {
       contactElement.scrollIntoView({ behavior: 'smooth' })
     }
@@ -103,7 +104,7 @@ const Apresentacao = () => {
             Através de uma metodologia de trabalho ágil e focada em resultados.
           </Typography>
         </Fade>
-        <Fade  direction="down">
+        <Fade direction="down">
           <FaleConosco onClick={handleScrollToContact}>
             Fale Conosco
           </FaleConosco>

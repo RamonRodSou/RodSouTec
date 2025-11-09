@@ -12,6 +12,7 @@ import PortifolioData from "./components/Portifolio/PortifolioData"
 import Portifolio from "@components/Portifolio/Portifolio"
 import HeroSection from "@components/HeroSection/HeroSection"
 import Tecnologias from "@components/Tecnologias/Tecnologias"
+import Footer from "@components/Footer/Footer"
 
 function App() {
 
@@ -90,6 +91,7 @@ function App() {
                 </ContainerP>
               </ContainerApresentacao>
               <Home />
+              <Footer />
             </>
           } />
 
@@ -98,20 +100,30 @@ function App() {
               <Header />
               <Projetos />
             </Container>
+
           } />
 
           <Route path="/portifolio" element={
-            <Container maxWidth="xl" sx={{ padding: '1rem' }}>
-              <Header />
-              <HeroSection />
-              <Tecnologias />
+            <>
+              <Container maxWidth="xl" sx={{ padding: '1rem' }}>
+                <Header />
+                <HeroSection />
+                <Tecnologias />
 
-              <Portifolio />
-            </Container>
+                <Portifolio />
+              </Container>
+              <Footer />
+            </>
+
           } />
 
-          <Route path="/lista/:path" element={<PortifolioData />} />
-
+          <Route path="/lista/:path" element={
+            <>
+              <PortifolioData />
+              <Footer />
+            </>
+          }
+          />
         </Routes>
 
       </Site>

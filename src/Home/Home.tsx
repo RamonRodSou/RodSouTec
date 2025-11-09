@@ -3,7 +3,6 @@ import Projetos from '../components/Projetos/Projetos'
 import Vantagens from '../components/Vantagens/Vantagens'
 import Duvidas from '../components/Duvidas/Duvidas'
 import FaleConosco from '../components/FaleConosco/FaleConosco'
-import Footer from '../components/Footer/Footer'
 import ValidationContext, { validaNome, validaEmail, validaTelefone, validaServico } from '../components/ValidationContext/ValidationContext'
 
 const Home = () => {
@@ -21,7 +20,6 @@ const Home = () => {
             }}>
                 <FaleConosco />
             </ValidationContext.Provider>
-            <Footer />
         </Container>
     )
 }

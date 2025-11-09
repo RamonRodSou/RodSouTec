@@ -116,13 +116,21 @@ const ImgBox = styled('img')(({ theme }) => ({
     cursor: 'pointer',
     position: 'sticky',
     top: '100px',
-    width: '40%',
+    width: 550,
     height: 350,
 
     '&:hover': {
         opacity: 0.9,
         transform: 'scale(1.1)'
+    },
 
+    [theme.breakpoints.down(1200)]: {
+        width: 450,
+    },
+
+    [theme.breakpoints.down(960)]: {
+        width: 400,
+        height: 300,
     },
 
     [theme.breakpoints.down(900)]: {
@@ -188,7 +196,7 @@ const Portifolio = () => {
     return (
         <BoxContainer >
             <Titulo>Portifólio</Titulo>
-            <SubTitle>Meus 10 Projetos + Relavantes</SubTitle>
+            <SubTitle>Meus Projetos + Relavantes</SubTitle>
             <BoxPortifolio>
                 {
                     items.map((items, index) => (

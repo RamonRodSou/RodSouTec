@@ -1,30 +1,24 @@
 export const dashboardDescription: string = `
 O Desafio:
-Minha igreja enfrentava um desafio comum a muitas organizações: a gestão de informações era descentralizada, baseada em planilhas e anotações manuais. Isso dificultava o acompanhamento de membros, a organização de eventos, a gestão financeira e a criação de relatórios precisos.
+Minha igreja enfrentava um desafio comum: a gestão de informações era descentralizada e manual, baseada em planilhas. Isso dificultava o acompanhamento de membros, a organização de eventos, o controle financeiro e a geração de relatórios precisos.
 
 A Solução: Um Ecossistema Integrado
-Para resolver este problema, liderei o desenvolvimento do "IAF Gestor", uma plataforma web completa que serve como o centro nervoso para todas as operações da igreja. Este é o front-end da solução, projetado para ser poderoso, intuitivo e acessível.
+Para resolver este problema, liderei o desenvolvimento do "IAF Gestor", uma plataforma web completa que funciona como um ERP (Sistema de Gestão Integrada) para todas as operações e um CRM (Gestão de Relacionamento) para a comunidade. A solução foi projetada para ser poderosa, intuitiva e acessível.
 
 Arquitetura e Tecnologias:
-
-Front-end: A interface foi construída com React e TypeScript, utilizando Vite como build tool para máxima performance. A tipagem estática do TypeScript foi crucial para gerenciar a complexidade de um projeto deste porte, garantindo manutenibilidade e menos bugs.
-
-Back-end e Integrações: A aplicação consome a API RESTful que desenvolvi em Java/Spring Boot, responsável pela lógica de negócio principal. Além disso, o sistema se integra com:
-
-n8n: Para orquestrar automações poderosas, como o envio de mensagens de aniversário e comunicados em massa via WhatsApp, lendo dados diretamente do banco.
-
-Firebase: Utilizado como um banco de dados de apoio para fluxos específicos de automação e integração em tempo real.
+A interface foi construída com React e TypeScript (Vite), garantindo performance e manutenibilidade. A aplicação consome a API RESTful que desenvolvi em Java/Spring Boot e se integra com n8n para automação de mensagens via WhatsApp e Firebase para dados em tempo real.
 
 Funcionalidades em Destaque:
+A plataforma integra funcionalidades estratégicas, como:
 
-Sistema de Ingressos com Validação por QR Code: Uma das funcionalidades mais complexas, o módulo de eventos permite criar ingressos para membros e visitantes. Cada ingresso gerado possui um QR Code único (baseado no ID do registro) e pode ser exportado para PDF. A aplicação possui um leitor de QR Code integrado que, ao escanear um ingresso, valida sua autenticidade, exibe os dados do participante e invalida o código para prevenir o reuso, controlando o acesso de forma segura e eficiente.
+Gestão de Eventos e Recursos (ERP): Implementei um sistema completo de ingressos com validação por QR Code e exportação para PDF. O leitor integrado controla o acesso em tempo real, otimizando a segurança e a organização dos eventos.
 
-Dashboard de Business Intelligence: A tela inicial apresenta um painel de controle com gráficos que mostram métricas vitais: total de membros vs. visitantes, fluxo financeiro mensal, frequência nos cultos e muito mais. Esses dados fornecem insights valiosos para a liderança da igreja.
+Inteligência de Negócios (ERP): O dashboard centraliza métricas vitais (financeiro, membros, visitantes, frequência) em gráficos interativos, fornecendo insights valiosos para a tomada de decisão da liderança.
 
-Gestão 360° dos Membros: O CRM permite um cadastro completo, incluindo relacionamentos familiares (pais e filhos) e informações críticas, como dados médicos para as crianças, garantindo cuidado e segurança.
+Gestão de Relacionamentos (CRM): Atuando como o coração da comunidade, o módulo de membros permite um cadastro 360°, incluindo relacionamentos familiares e informações críticas (como dados médicos das crianças), fortalecendo o cuidado e a segurança.
 
 Impacto:
-O IAF Gestor está em produção e transformou a administração da minha igreja. Processos que levavam horas agora são feitos em minutos. A centralização dos dados permitiu uma tomada de decisão mais estratégica e melhorou a comunicação e o engajamento com a comunidade.
+O IAF Gestor está em produção e transformou a administração da igreja. Processos que levavam horas agora são feitos em minutos. A centralização dos dados permitiu uma tomada de decisão mais estratégica (resultado do ERP) e melhorou a comunicação e o engajamento com a comunidade (resultado do CRM).
 `;
 
 export const doutorVisaoDescription: string = `
